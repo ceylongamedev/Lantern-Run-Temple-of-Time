@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -30,6 +30,7 @@ public class PlayerControler : MonoBehaviour
     private void Awake()
     {
         animator.applyRootMotion = false;
+        animator.SetBool("isRunning", true);
     }
 
     private void Update()
@@ -43,16 +44,18 @@ public class PlayerControler : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.A)||Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             ChangeLane(-1);
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             ChangeLane(1);
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && _isGrounded && !_isSliding)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            && _isGrounded && !_isSliding)
             Jump();
 
-        if ((Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow)) && _isGrounded && !_isSliding)
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            && _isGrounded && !_isSliding)
             StartCoroutine(Slide());
     }
 
@@ -60,6 +63,7 @@ public class PlayerControler : MonoBehaviour
     {
         return _isGrounded && !_isSliding && !_isDead;
     }
+
     private void ChangeLane(int direction)
     {
         int targetLane = Mathf.Clamp(_currentStep + direction, 0, 2);
@@ -70,9 +74,16 @@ public class PlayerControler : MonoBehaviour
         if (!CanPlayLaneAnimation()) return;
 
         if (direction < 0)
-            animator.SetTrigger("moveLeft");
+            StartCoroutine(PlayLaneBool("moveLeft"));
         else
-            animator.SetTrigger("moveRight");
+            StartCoroutine(PlayLaneBool("moveRight"));
+    }
+
+    private IEnumerator PlayLaneBool(string boolName)
+    {
+        animator.SetBool(boolName, true);
+        yield return new WaitForSeconds(0.15f);
+        animator.SetBool(boolName, false);
     }
 
     private void HandleMovement()
@@ -92,7 +103,7 @@ public class PlayerControler : MonoBehaviour
         _isGrounded = false;
 
         animator.SetBool("isJumping", true);
-        animator.speed = 1.4f; 
+        animator.speed = 1.4f;
     }
 
     private void ApplyGravity()
@@ -105,8 +116,7 @@ public class PlayerControler : MonoBehaviour
                 animator.SetBool("isJumping", false);
                 animator.speed = 1f;
 
-                animator.ResetTrigger("moveLeft");
-                animator.ResetTrigger("moveRight");
+
                 animator.SetBool("isRunning", true);
             }
 
@@ -122,6 +132,7 @@ public class PlayerControler : MonoBehaviour
     {
         _isSliding = true;
         animator.SetBool("isSliding", true);
+        animator.SetBool("isRunning", false);
 
         float originalHeight = controller.height;
         controller.height = originalHeight / 2;
@@ -130,17 +141,15 @@ public class PlayerControler : MonoBehaviour
 
         controller.height = originalHeight;
         animator.SetBool("isSliding", false);
+        animator.SetBool("isRunning", true);
         _isSliding = false;
 
-        animator.ResetTrigger("moveLeft");
-        animator.ResetTrigger("moveRight");
-        animator.SetBool("isRunning", true);
+
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit == null) return;
-        if (hit.collider == null) return;
+        if (hit == null || hit.collider == null) return;
 
         if (hit.collider.CompareTag("Obstacle") && !_isDead)
         {
@@ -164,4 +173,4 @@ public class PlayerControler : MonoBehaviour
         Destroy(gameObject);
     }
 
-}//Class
+}
