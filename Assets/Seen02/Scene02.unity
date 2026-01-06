@@ -900,6 +900,7 @@ MonoBehaviour:
   _gravity: -20
   _slideDuration: 1
   _destroyDelay: 2
+  _isDead: 0
   animator: {fileID: 1942945931}
   controller: {fileID: 1942945934}
 --- !u!4 &1942945936 stripped

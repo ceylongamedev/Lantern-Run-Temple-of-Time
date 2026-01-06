@@ -20,7 +20,7 @@ public class PlayerControler : MonoBehaviour
 
     [Header("Death")]
     [SerializeField] private float _destroyDelay = 2f;
-    private bool _isDead;
+    [SerializeField] private bool _isDead;
 
     [Header("References")]
     [SerializeField] private Animator animator;
