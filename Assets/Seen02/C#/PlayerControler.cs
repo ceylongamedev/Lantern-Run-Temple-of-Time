@@ -170,6 +170,7 @@ public class PlayerControler : MonoBehaviour
     private IEnumerator DestroyPlayer()
     {
         yield return new WaitForSeconds(_destroyDelay);
+        Debug.Log("Is Player Dead");
         Destroy(gameObject);
     }
 
