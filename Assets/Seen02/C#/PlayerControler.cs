@@ -25,12 +25,14 @@ public class PlayerControler : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
+    float lockz = 0;
 
 
     private void Awake()
     {
         animator.applyRootMotion = false;
         animator.SetBool("isRunning", true);
+        lockz = transform.position.z;
     }
 
     private void Update()
@@ -40,6 +42,12 @@ public class PlayerControler : MonoBehaviour
         HandleInput();
         HandleMovement();
         ApplyGravity();
+    }
+    private void LateUpdate()
+    {
+        Vector3 pos = transform.position;
+        pos.z = lockz;
+        transform.position = pos;// freez z
     }
 
     private void HandleInput()
@@ -91,8 +99,11 @@ public class PlayerControler : MonoBehaviour
         float targetX = (_currentStep - 1) * _stepDistanse;
         float diff = targetX - transform.position.x;
 
-        Vector3 move = Vector3.right * diff * _sideMOveSpeed;
+        Vector3 move = Vector3.zero;
+
+        move.x = diff * _sideMOveSpeed;
         move.y = _verticalVelocity;
+        move.z = 0f; 
 
         controller.Move(move * Time.deltaTime);
     }
@@ -171,7 +182,7 @@ public class PlayerControler : MonoBehaviour
     {
         yield return new WaitForSeconds(_destroyDelay);
         Debug.Log("Is Player Dead");
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 }
