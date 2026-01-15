@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -736,6 +736,30 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: spawnAheadDistance
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: despawnBehindDistance
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: tilePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: 'tilePrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8378991725617883665, guid: 4bdfde4573bf4894a83681458442def3, type: 3}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: 'tilePrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6316929696390009771, guid: 2a47112aafeb5a84f8238134faa585b3, type: 3}
+    - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: 'tilePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1654625372632293187, guid: df17eef78a4991444a6fb5fcf49c07fe, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
