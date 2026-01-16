@@ -746,12 +746,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
       propertyPath: tilePrefabs.Array.size
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
       propertyPath: 'tilePrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 3396025489911520323, guid: 6e197a5ef54c0a6459c40d86a004aa0a, type: 3}
+      objectReference: {fileID: 1798444016529357139, guid: 14a9b002107739a4191c5ba1e37f7f8d, type: 3}
     - target: {fileID: 6547775795995762328, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
       propertyPath: 'tilePrefabs.Array.data[1]'
       value: 

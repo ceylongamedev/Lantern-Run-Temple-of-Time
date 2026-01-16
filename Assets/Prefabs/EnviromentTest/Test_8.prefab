@@ -429,6 +429,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4923739444108370929}
+  - component: {fileID: 5326016915512238708}
+  - component: {fileID: -5800989050887906897}
   m_Layer: 0
   m_Name: Test_8
   m_TagString: Untagged
@@ -460,6 +462,31 @@ Transform:
   - {fileID: 3949124975591016173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5326016915512238708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356699815592806686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca980ad343af17b48a59a881209cb0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunnerTile
+--- !u!114 &-5800989050887906897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356699815592806686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7366c77ab006547a1be192ad405e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileIdentity
+  prefab: {fileID: 0}
 --- !u!1001 &30635680791300261
 PrefabInstance:
   m_ObjectHideFlags: 0
