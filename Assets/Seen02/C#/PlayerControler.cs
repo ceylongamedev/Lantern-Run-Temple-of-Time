@@ -27,6 +27,8 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private CharacterController controller;
     float lockz = 0;
 
+    public bool isPowerUpOn = false;
+
 
     private void Awake()
     {
@@ -158,11 +160,11 @@ public class PlayerControler : MonoBehaviour
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit == null || hit.collider == null) return;
+        if (other == null) return;
 
-        if (hit.collider.CompareTag("Obstacle") && !_isDead)
+        if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
         {
             Die();
         }

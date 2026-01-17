@@ -100,6 +100,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5433076316727975962}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2427733809525982794}
   m_SourcePrefab: {fileID: 100100000, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
 --- !u!4 &3503309982136984671 stripped
 Transform:
@@ -148,15 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187becadd4d548c468c1664702202026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stepDistanse: 2.5
+  _stepDistanse: 1.8
   _sideMOveSpeed: 8
-  _jumpForce: 7
+  _jumpForce: 10
   _gravity: -20
   _slideDuration: 1
   _destroyDelay: 2
   _isDead: 0
   animator: {fileID: 2341321052468350191}
   controller: {fileID: 6286645760996730423}
+  isPowerUpOn: 0
 --- !u!54 &5433076316727975962
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,11 +183,34 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &2427733809525982794
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4311512139604606693}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5421982
+  m_Height: 2.0663562
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.1023834, z: -0.122783184}
 --- !u!1001 &8148312166282670462
 PrefabInstance:
   m_ObjectHideFlags: 0
