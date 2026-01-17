@@ -7,7 +7,10 @@ public class RunnerTile : MonoBehaviour
     void Awake()
     {
         MeshRenderer mr = GetComponentInChildren<MeshRenderer>();
-        Length = mr.bounds.size.z;
+        BoxCollider collider = GetComponent<BoxCollider>();
+        Debug.Log("Length from collider : "+collider.bounds.size.z);
+        Length = collider.bounds.size.z;
+        Debug.Log(Length);
     }
 
     public float EndZ => transform.position.z + Length;

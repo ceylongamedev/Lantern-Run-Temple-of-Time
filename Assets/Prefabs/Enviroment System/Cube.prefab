@@ -52,7 +52,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798444016529357139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -108,7 +108,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -499,8 +499,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6200286073815106444}
-  - component: {fileID: 3397215790050241426}
-  - component: {fileID: 1149303359739385408}
   m_Layer: 0
   m_Name: Test_1
   m_TagString: Untagged
@@ -531,31 +529,6 @@ Transform:
   - {fileID: 1177544737507444740}
   m_Father: {fileID: 2412583784976604228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3397215790050241426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490057287834121289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca980ad343af17b48a59a881209cb0bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RunnerTile
---- !u!114 &1149303359739385408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490057287834121289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7366c77ab006547a1be192ad405e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileIdentity
-  prefab: {fileID: 0}
 --- !u!1 &5525484025246247436
 GameObject:
   m_ObjectHideFlags: 0
