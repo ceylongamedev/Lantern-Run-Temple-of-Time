@@ -183,8 +183,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3947233380218090616}
-  - {fileID: 7490771669827632228}
   - {fileID: 6944409744942219870}
+  - {fileID: 7490771669827632228}
   - {fileID: 5336937597684598927}
   - {fileID: 3444991237479377547}
   m_Father: {fileID: 3052009613281652710}
@@ -216,13 +216,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5467249783249334624}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.4173912, y: 0, z: 0, w: 0.90872693}
-  m_LocalPosition: {x: 0, y: 1.45, z: 11.11}
+  m_LocalRotation: {x: -0.38711333, y: 0, z: 0, w: 0.92203224}
+  m_LocalPosition: {x: 0, y: 1.68, z: 11.09}
   m_LocalScale: {x: 0.5, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7388424620571574207}
-  m_LocalEulerAnglesHint: {x: -49.34, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -45.55, y: 0, z: 0}
 --- !u!33 &3861731500927722741
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca980ad343af17b48a59a881209cb0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunnerTile
+  Length: 136
 --- !u!114 &-2949753968217004465
 MonoBehaviour:
   m_ObjectHideFlags: 0
