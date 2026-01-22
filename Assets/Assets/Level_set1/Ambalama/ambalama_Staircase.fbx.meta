@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 76bc7131c71594042825b5d253424d90
+guid: a1892a89ad8f934438d15296105673ac
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ground2
-    second: {fileID: 2100000, guid: bf6a84719ea7df840b78588d3d6d0feb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -51,7 +46,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
