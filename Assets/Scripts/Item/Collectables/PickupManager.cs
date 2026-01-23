@@ -11,7 +11,12 @@ public class PickupManager : MonoBehaviour
 
     private List<GameObject> spawnedPickups = new List<GameObject>();
 
-    private void Start()
+    //private void Start()
+    //{
+    //    SpawnPickups();
+    //}
+
+    private void OnEnable()
     {
         SpawnPickups();
     }
@@ -19,7 +24,7 @@ public class PickupManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I))
+        if (Input.GetKeyUp(KeyCode.C))
         {
             ClearPickups();
             SpawnPickups();
@@ -34,8 +39,7 @@ public class PickupManager : MonoBehaviour
         {
             if (pickupPrefabs.Count == 0) return;
 
-            GameObject prefab =
-                pickupPrefabs[Random.Range(0, pickupPrefabs.Count)];
+            GameObject prefab = pickupPrefabs[Random.Range(0, pickupPrefabs.Count)];
 
             GameObject pickup = Instantiate(
                 prefab,
@@ -43,9 +47,12 @@ public class PickupManager : MonoBehaviour
                 spawnPoint.rotation
             );
 
+            pickup.transform.SetParent(spawnPoint);
+
             spawnedPickups.Add(pickup);
         }
     }
+
 
     void ClearPickups()
     {
