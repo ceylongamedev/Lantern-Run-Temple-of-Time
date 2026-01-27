@@ -1234,10 +1234,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test_3
       objectReference: {fileID: 0}
-    - target: {fileID: 8944811106264251783, guid: 13a66e0461301a94488159cfa059ed6e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
