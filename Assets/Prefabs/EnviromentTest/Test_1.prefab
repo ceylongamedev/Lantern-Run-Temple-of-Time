@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9099572639295253815}
   m_Layer: 0
-  m_Name: Spawn Point (3)
+  m_Name: Coin Spawn Points3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363926437103600755}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 27.62}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: -1.0699997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8679342765646838940}
+  m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643465128488060360
 GameObject:
@@ -69,6 +69,37 @@ Transform:
   - {fileID: 1543873078739547798}
   m_Father: {fileID: 5690015313208993653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1098895561763775216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234837151491798728}
+  m_Layer: 0
+  m_Name: Lantern Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234837151491798728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098895561763775216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.53, y: 1.1, z: -9.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8107915940460254325}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214970849327578890
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,13 +129,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8334456257285559684}
-  - {fileID: 7316913188049777989}
-  - {fileID: 2073967475731156425}
-  - {fileID: 9099572639295253815}
-  - {fileID: 1664792623653906280}
-  - {fileID: 420910508877253373}
-  - {fileID: 3954398867074168139}
+  - {fileID: 5320106423144534513}
+  - {fileID: 8107915940460254325}
   m_Father: {fileID: 5690015313208993653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1559139818670487611
@@ -149,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073967475731156425}
   m_Layer: 0
-  m_Name: Spawn Point (2)
+  m_Name: Coin Spawn Points2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,12 +189,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109613005743781465}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 22.51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: -6.1800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8679342765646838940}
+  m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3396025489911520323
 GameObject:
@@ -251,9 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7545d43e70fed1744b0dd9e863d4ba65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupManager
-  pickupPrefabs:
-  - {fileID: 1160249968776288181, guid: ec4cad88233671f4fa33c9bbc4126cba, type: 3}
-  spawnPoints:
+  coinPrefabs:
+  - {fileID: 1160249968776288181, guid: 11007191ccd792345a5b3aaf8f6bf527, type: 3}
+  coinSpawnPoints:
   - {fileID: 8334456257285559684}
   - {fileID: 7316913188049777989}
   - {fileID: 2073967475731156425}
@@ -261,6 +287,13 @@ MonoBehaviour:
   - {fileID: 1664792623653906280}
   - {fileID: 420910508877253373}
   - {fileID: 3954398867074168139}
+  lanternPrefabs:
+  - {fileID: 1160249968776288181, guid: ec4cad88233671f4fa33c9bbc4126cba, type: 3}
+  lanternSpawnPoints:
+  - {fileID: 4234837151491798728}
+  - {fileID: 4665258241029928212}
+  obstaclePrefabs: []
+  obstacleSpawnPoints: []
 --- !u!1 &4374279609431712518
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664792623653906280}
   m_Layer: 0
-  m_Name: Spawn Point (4)
+  m_Name: Coin Spawn Points4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,12 +430,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4539968990202076196}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 32.71}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: 4.0199986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8679342765646838940}
+  m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4782452708809223530
 GameObject:
@@ -414,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7316913188049777989}
   m_Layer: 0
-  m_Name: Spawn Point (1)
+  m_Name: Coin Spawn Points1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,12 +461,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4782452708809223530}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 17.69}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8679342765646838940}
+  m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4918542224882933868
 GameObject:
@@ -445,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3954398867074168139}
   m_Layer: 0
-  m_Name: Spawn Point (6)
+  m_Name: Coin Spawn Points6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,12 +492,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4918542224882933868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 42.73}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: 14.039999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8679342765646838940}
+  m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4928065963621562656
 GameObject:
@@ -476,7 +509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420910508877253373}
   m_Layer: 0
-  m_Name: Spawn Point (5)
+  m_Name: Coin Spawn Points5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,11 +523,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4928065963621562656}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 37.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: 8.909998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 5320106423144534513}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5073869902368743867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8107915940460254325}
+  m_Layer: 0
+  m_Name: Lantern Spawn Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8107915940460254325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073869902368743867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4234837151491798728}
+  - {fileID: 4665258241029928212}
   m_Father: {fileID: 8679342765646838940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5196049222254904708
@@ -507,7 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8334456257285559684}
   m_Layer: 0
-  m_Name: Spawn Point
+  m_Name: Coin Spawn Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,12 +587,81 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5196049222254904708}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 13}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: -15.690001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 5320106423144534513}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5422201172667447119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5320106423144534513}
+  m_Layer: 0
+  m_Name: Coin Spawn Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5320106423144534513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422201172667447119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 28.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8334456257285559684}
+  - {fileID: 7316913188049777989}
+  - {fileID: 2073967475731156425}
+  - {fileID: 9099572639295253815}
+  - {fileID: 1664792623653906280}
+  - {fileID: 420910508877253373}
+  - {fileID: 3954398867074168139}
   m_Father: {fileID: 8679342765646838940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6773509425136698860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4665258241029928212}
+  m_Layer: 0
+  m_Name: Lantern Spawn Point (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4665258241029928212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6773509425136698860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.304, y: 1.1, z: 75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8107915940460254325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8389616344280376157
 GameObject:

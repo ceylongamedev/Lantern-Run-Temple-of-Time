@@ -3,65 +3,125 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-    [Header("Pickup Prefabs")]
-    public List<GameObject> pickupPrefabs;
+    [Header("Coin")]
+    public List<GameObject> coinPrefabs;
+    public List<Transform> coinSpawnPoints;
+    private List<GameObject> coinSpawnedPickups = new List<GameObject>();
 
-    [Header("Spawn Points")]
-    public List<Transform> spawnPoints;
+    [Header("Lantern")]
+    public List<GameObject> lanternPrefabs;
+    public List<Transform> lanternSpawnPoints;
+    private GameObject spawnedLantern;
 
-    private List<GameObject> spawnedPickups = new List<GameObject>();
-
-    //private void Start()
-    //{
-    //    SpawnPickups();
-    //}
+    [Header("Obstacle")]
+    public List<GameObject> obstaclePrefabs;
+    public List<Transform> obstacleSpawnPoints;
+    private GameObject spawnedObstacle;
 
     private void OnEnable()
     {
-        SpawnPickups();
+        SpawnCoins();
+        SpawnLantern();
+        SpawnObstacle();
     }
-
 
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.C))
         {
-            ClearPickups();
-            SpawnPickups();
+            ClearCoins();
+            ClearLantern();
+            ClearObstacle();
+
+            SpawnCoins();
+            SpawnLantern();
+            SpawnObstacle();
         }
     }
 
-    public void SpawnPickups()
+    public void SpawnCoins()
     {
-        ClearPickups();
+        ClearCoins();
 
-        foreach (Transform spawnPoint in spawnPoints)
+        if (coinPrefabs.Count == 0) return;
+
+        foreach (Transform spawnPoint in coinSpawnPoints)
         {
-            if (pickupPrefabs.Count == 0) return;
+            GameObject prefab =
+                coinPrefabs[Random.Range(0, coinPrefabs.Count)];
 
-            GameObject prefab = pickupPrefabs[Random.Range(0, pickupPrefabs.Count)];
-
-            GameObject pickup = Instantiate(
+            GameObject coin = Instantiate(
                 prefab,
                 spawnPoint.position,
                 spawnPoint.rotation
             );
 
-            pickup.transform.SetParent(spawnPoint);
-
-            spawnedPickups.Add(pickup);
+            coin.transform.SetParent(spawnPoint);
+            coinSpawnedPickups.Add(coin);
         }
     }
 
-
-    void ClearPickups()
+    public void ClearCoins()
     {
-        foreach (GameObject pickup in spawnedPickups)
+        foreach (GameObject coin in coinSpawnedPickups)
         {
-            if (pickup != null)
-                Destroy(pickup);
+            if (coin != null)
+                Destroy(coin);
         }
+        coinSpawnedPickups.Clear();
+    }
 
-        spawnedPickups.Clear();
+    public void SpawnLantern()
+    {
+        ClearLantern();
+
+        if (lanternPrefabs.Count == 0 || lanternSpawnPoints.Count == 0) return;
+
+        Transform randomPoint =
+            lanternSpawnPoints[Random.Range(0, lanternSpawnPoints.Count)];
+
+        GameObject prefab =
+            lanternPrefabs[Random.Range(0, lanternPrefabs.Count)];
+
+        spawnedLantern = Instantiate(
+            prefab,
+            randomPoint.position,
+            randomPoint.rotation
+        );
+
+        spawnedLantern.transform.SetParent(randomPoint);
+    }
+
+    public void ClearLantern()
+    {
+        if (spawnedLantern != null)
+            Destroy(spawnedLantern);
+    }
+
+    public void SpawnObstacle()
+    {
+        ClearObstacle();
+
+        if (obstaclePrefabs.Count == 0 || obstacleSpawnPoints.Count == 0) return;
+
+        Transform randomPoint =
+            obstacleSpawnPoints[Random.Range(0, obstacleSpawnPoints.Count)];
+
+        GameObject prefab =
+            obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
+
+        spawnedObstacle = Instantiate(
+            prefab,
+            randomPoint.position,
+            randomPoint.rotation
+        );
+
+        spawnedObstacle.transform.SetParent(randomPoint);
+    }
+
+    public void ClearObstacle()
+    {
+        if (spawnedObstacle != null)
+            Destroy(spawnedObstacle);
     }
 }
