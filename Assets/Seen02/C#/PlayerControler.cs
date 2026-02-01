@@ -14,27 +14,37 @@ public class PlayerControler : MonoBehaviour
     private float _verticalVelocity;
     private bool _isGrounded = true;
 
-    [Header("Slide")]
+    [Header("Slide / Crouch")]
     [SerializeField] private float _slideDuration = 1f;
+    [SerializeField] private float _heightLerpSpeed = 8f;
+    [SerializeField] private float _standUpJumpLerpSpeed = 14f;
     private bool _isSliding;
+    private Coroutine _slideRoutine;
 
     [Header("Death")]
     [SerializeField] private float _destroyDelay = 2f;
-    [SerializeField] private bool _isDead;
+    private bool _isDead;
 
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
-    float lockz = 0;
+
+    private float _lockz;
+    private float _originalHeight;
+    private Vector3 _originalCenter;
+    private float _targetHeight;
 
     public bool isPowerUpOn = false;
-
 
     private void Awake()
     {
         animator.applyRootMotion = false;
         animator.SetBool("isRunning", true);
-        lockz = transform.position.z;
+
+        _lockz = transform.position.z;
+
+        _originalHeight = controller.height;
+        _originalCenter = controller.center;
     }
 
     private void Update()
@@ -45,11 +55,12 @@ public class PlayerControler : MonoBehaviour
         HandleMovement();
         ApplyGravity();
     }
+
     private void LateUpdate()
     {
         Vector3 pos = transform.position;
-        pos.z = lockz;
-        transform.position = pos;// freez z
+        pos.z = _lockz;
+        transform.position = pos;
     }
 
     private void HandleInput()
@@ -60,13 +71,25 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             ChangeLane(1);
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            && _isGrounded && !_isSliding)
-            Jump();
+        //JUMP ground OR mid crouch
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (_isSliding)
+            {
+                JumpFromCrouch();
+            }
+            else if (_isGrounded)
+            {
+                Jump();
+            }
+        }
 
+        // CROUCH
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             && _isGrounded && !_isSliding)
-            StartCoroutine(Slide());
+        {
+            _slideRoutine = StartCoroutine(Slide());
+        }
     }
 
     private bool CanPlayLaneAnimation()
@@ -83,10 +106,7 @@ public class PlayerControler : MonoBehaviour
 
         if (!CanPlayLaneAnimation()) return;
 
-        if (direction < 0)
-            StartCoroutine(PlayLaneBool("moveLeft"));
-        else
-            StartCoroutine(PlayLaneBool("moveRight"));
+        StartCoroutine(PlayLaneBool(direction < 0 ? "moveLeft" : "moveRight"));
     }
 
     private IEnumerator PlayLaneBool(string boolName)
@@ -101,11 +121,10 @@ public class PlayerControler : MonoBehaviour
         float targetX = (_currentStep - 1) * _stepDistanse;
         float diff = targetX - transform.position.x;
 
-        Vector3 move = Vector3.zero;
-
+        Vector3 move;
         move.x = diff * _sideMOveSpeed;
         move.y = _verticalVelocity;
-        move.z = 0f; 
+        move.z = 0f;
 
         controller.Move(move * Time.deltaTime);
     }
@@ -116,7 +135,45 @@ public class PlayerControler : MonoBehaviour
         _isGrounded = false;
 
         animator.SetBool("isJumping", true);
+        animator.SetBool("isSliding", false);
+        animator.SetBool("isRunning", false);
         animator.speed = 1.4f;
+    }
+
+    // JUMP mid crouch
+    private void JumpFromCrouch()
+    {
+        if (_slideRoutine != null)
+            StopCoroutine(_slideRoutine);
+
+        _isSliding = false;
+
+        StartCoroutine(StandUpThenJump());
+    }
+
+    private IEnumerator StandUpThenJump()
+    {
+        while (Mathf.Abs(controller.height - _originalHeight) > 0.01f)
+        {
+            controller.height = Mathf.Lerp(
+                controller.height,
+                _originalHeight,
+                Time.deltaTime * _standUpJumpLerpSpeed
+            );
+
+            controller.center = new Vector3(
+                _originalCenter.x,
+                controller.height / 2f,
+                _originalCenter.z
+            );
+
+            yield return null;
+        }
+
+        controller.height = _originalHeight;
+        controller.center = _originalCenter;
+
+        Jump();
     }
 
     private void ApplyGravity()
@@ -128,8 +185,6 @@ public class PlayerControler : MonoBehaviour
                 _isGrounded = true;
                 animator.SetBool("isJumping", false);
                 animator.speed = 1f;
-
-
                 animator.SetBool("isRunning", true);
             }
 
@@ -144,39 +199,70 @@ public class PlayerControler : MonoBehaviour
     private IEnumerator Slide()
     {
         _isSliding = true;
+
         animator.SetBool("isSliding", true);
         animator.SetBool("isRunning", false);
 
-        float originalHeight = controller.height;
-        controller.height = originalHeight / 2;
+        _targetHeight = _originalHeight * 0.5f;
+
+        //crouch
+        while (Mathf.Abs(controller.height - _targetHeight) > 0.01f)
+        {
+            controller.height = Mathf.Lerp(
+                controller.height,
+                _targetHeight,
+                Time.deltaTime * _heightLerpSpeed
+            );
+
+            controller.center = new Vector3(
+                _originalCenter.x,
+                controller.height / 2f,
+                _originalCenter.z
+            );
+
+            yield return null;
+        }
 
         yield return new WaitForSeconds(_slideDuration);
 
-        controller.height = originalHeight;
+        // Smoth standup
+        while (Mathf.Abs(controller.height - _originalHeight) > 0.01f)
+        {
+            controller.height = Mathf.Lerp(
+                controller.height,
+                _originalHeight,
+                Time.deltaTime * _heightLerpSpeed
+            );
+
+            controller.center = new Vector3(
+                _originalCenter.x,
+                controller.height / 2f,
+                _originalCenter.z
+            );
+
+            yield return null;
+        }
+
+        controller.height = _originalHeight;
+        controller.center = _originalCenter;
+
         animator.SetBool("isSliding", false);
         animator.SetBool("isRunning", true);
+
         _isSliding = false;
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == null) return;
-
         if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
-        {
             Die();
-        }
     }
 
     private void Die()
     {
         _isDead = true;
-
         animator.SetBool("isRunning", false);
         animator.SetBool("isDead", true);
-
         StartCoroutine(DestroyPlayer());
     }
 
@@ -184,7 +270,5 @@ public class PlayerControler : MonoBehaviour
     {
         yield return new WaitForSeconds(_destroyDelay);
         Debug.Log("Is Player Dead");
-        //Destroy(gameObject);
     }
-
-}
+}//Class
