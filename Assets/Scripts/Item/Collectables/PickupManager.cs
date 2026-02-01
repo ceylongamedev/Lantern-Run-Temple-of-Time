@@ -27,16 +27,16 @@ public class PickupManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            ClearCoins();
-            ClearLantern();
-            ClearObstacle();
+        //if (Input.GetKeyUp(KeyCode.C))
+        //{
+        //    ClearCoins();
+        //    ClearLantern();
+        //    ClearObstacle();
 
-            SpawnCoins();
-            SpawnLantern();
-            SpawnObstacle();
-        }
+        //    SpawnCoins();
+        //    SpawnLantern();
+        //    SpawnObstacle();
+        //}
     }
 
     public void SpawnCoins()
