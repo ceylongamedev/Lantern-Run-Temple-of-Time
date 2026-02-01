@@ -1636,8 +1636,8 @@ Transform:
   m_GameObject: {fileID: 6994745296846713282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 83.88}
-  m_LocalScale: {x: 0.5, y: 1, z: 4.4}
+  m_LocalPosition: {x: 0, y: 0, z: 77.7154}
+  m_LocalScale: {x: 0.5, y: 1, z: 5.6325936}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7388424620571574207}
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca980ad343af17b48a59a881209cb0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunnerTile
-  Length: 136
+  Length: 136.01
 --- !u!114 &-2949753968217004465
 MonoBehaviour:
   m_ObjectHideFlags: 0
