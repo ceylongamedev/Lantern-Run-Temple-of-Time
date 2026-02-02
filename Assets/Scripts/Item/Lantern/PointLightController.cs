@@ -15,6 +15,8 @@ public class PointLightController : MonoBehaviour
     private float transitionTime;
     private bool isTransitioning;
 
+    [SerializeField] private float lightIncreaseAmount = 2f;
+
     void Start()
     {
         pointLight = GetComponent<Light>();
@@ -31,13 +33,13 @@ public class PointLightController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            IncreaseIntensity(3f);
-        }else if (Input.GetKeyDown(KeyCode.U))
-        {
-            DecreaseIntensity(1f);
-        }
+        //if (Input.GetKeyDown(KeyCode.I))
+        //{
+        //    IncreaseIntensity(3f);
+        //}else if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    DecreaseIntensity(1f);
+        //}
 
         if (isTransitioning)
         {
@@ -58,13 +60,14 @@ public class PointLightController : MonoBehaviour
         }
     }
 
-    public void IncreaseIntensity(float amount)
+    public void IncreaseIntensity()
     {
         transitionStartIntensity = pointLight.intensity;
-        targetIntensity = Mathf.Min(pointLight.intensity + amount, maxIntensity);
+        targetIntensity = Mathf.Clamp(pointLight.intensity + lightIncreaseAmount, 0f, 2f);
         transitionTime = 0f;
         isTransitioning = true;
     }
+
 
     public void DecreaseIntensity(float amount)
     {

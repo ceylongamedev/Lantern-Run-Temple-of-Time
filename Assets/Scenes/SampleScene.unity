@@ -472,6 +472,7 @@ MonoBehaviour:
   minIntensity: 0
   transitionDuration: 2
   decayRate: 0.07
+  lightIncreaseAmount: 2
 --- !u!4 &317722772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503309982136984671, guid: cde1768477805914688f26ea273f4346, type: 3}
@@ -838,6 +839,7 @@ MonoBehaviour:
   minIntensity: 0
   transitionDuration: 4
   decayRate: 0.14
+  lightIncreaseAmount: 2
 --- !u!114 &677037025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +880,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.9626423, g: 1, b: 0, a: 1}
-  m_Intensity: 8
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1001,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944811106264251783, guid: 13a66e0461301a94488159cfa059ed6e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1157,6 +1159,7 @@ MonoBehaviour:
   playerTag: Player
   scoreValue: 10
   pickupEffect: {fileID: 0}
+  type: 0
 --- !u!65 &908166136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1749,6 +1752,7 @@ MonoBehaviour:
   minIntensity: 0
   transitionDuration: 4
   decayRate: 0.14
+  lightIncreaseAmount: 2
 --- !u!114 &1551418152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,7 +1793,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.9626423, g: 1, b: 0, a: 1}
-  m_Intensity: 8
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1949,6 +1953,7 @@ MonoBehaviour:
   playerTag: Player
   scoreValue: 10
   pickupEffect: {fileID: 0}
+  type: 0
 --- !u!65 &1732917140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2076,6 +2081,7 @@ MonoBehaviour:
   playerTag: Player
   scoreValue: 10
   pickupEffect: {fileID: 0}
+  type: 0
 --- !u!65 &2054359777
 BoxCollider:
   m_ObjectHideFlags: 0

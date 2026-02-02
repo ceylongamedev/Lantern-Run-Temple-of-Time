@@ -71,6 +71,7 @@ MonoBehaviour:
   playerTag: Player
   scoreValue: 10
   pickupEffect: {fileID: 0}
+  type: 2
 --- !u!1 &7603400343395535474
 GameObject:
   m_ObjectHideFlags: 0

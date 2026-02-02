@@ -16,6 +16,8 @@ public class EndlessEnvironment : MonoBehaviour
     private Dictionary<GameObject, TilePool> pools = new Dictionary<GameObject, TilePool>();
     private List<GameObject> activeTiles = new List<GameObject>();
 
+
+    public static bool isPlayerDead;
     void Awake()
     {
         foreach (GameObject prefab in tilePrefabs)
@@ -26,6 +28,8 @@ public class EndlessEnvironment : MonoBehaviour
 
     void Start()
     {
+        isPlayerDead = false;
+
         for (int i = 0; i < 5; i++)
         {
             SpawnTile();
@@ -34,6 +38,7 @@ public class EndlessEnvironment : MonoBehaviour
 
     void Update()
     {
+        if(isPlayerDead) return;
         MoveTiles();
         SpawnIfNeeded();
         DespawnTiles();

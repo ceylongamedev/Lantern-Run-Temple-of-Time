@@ -263,6 +263,7 @@ public class PlayerControler : MonoBehaviour
         _isDead = true;
         animator.SetBool("isRunning", false);
         animator.SetBool("isDead", true);
+        EndlessEnvironment.isPlayerDead = true;
         StartCoroutine(DestroyPlayer());
     }
 
