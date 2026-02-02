@@ -35,6 +35,7 @@ public class PickupItem : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(playerTag)) return;

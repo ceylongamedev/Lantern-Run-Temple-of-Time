@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1659426315897766326}
   - component: {fileID: 235153449359848220}
   - component: {fileID: 3247237186044894270}
+  - component: {fileID: 1861101650814835859}
   m_Layer: 6
   m_Name: Lantern 1
   m_TagString: Untagged
@@ -70,6 +71,20 @@ MonoBehaviour:
   playerTag: Player
   scoreValue: 10
   pickupEffect: {fileID: 0}
+  type: 1
+--- !u!114 &1861101650814835859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160249968776288181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1145915ab99fa4982155387505d2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinRotation
+  rotationSpeed: 100
 --- !u!1001 &1564959724995270558
 PrefabInstance:
   m_ObjectHideFlags: 0
