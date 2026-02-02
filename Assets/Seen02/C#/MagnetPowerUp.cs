@@ -9,8 +9,27 @@ public class MagnetPowerUp : MonoBehaviour
 
     public bool magnetActive = false;
 
+    [Header("Renderer")]
+    [SerializeField] private Renderer targetRenderer;
+    [SerializeField] private Color magnetColer = Color.red;
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            magnetActive = !magnetActive;
+    
+        }
+        if (magnetActive)
+        {
+            targetRenderer.material.SetFloat("_ON", 1f);
+            targetRenderer.material.SetColor("BottomColor", magnetColer);
+        }
+        else if (!magnetActive)
+        {
+            targetRenderer.material.SetFloat("_ON", 0f);
+        }
+
         if (!magnetActive) return;
 
         Collider[] coins = Physics.OverlapSphere(transform.position, _magnetRadius, _coinLayer);
@@ -21,6 +40,7 @@ public class MagnetPowerUp : MonoBehaviour
             Vector3 direction = (transform.position - coin.transform.position).normalized;
             coin.transform.position += direction * _magnetSpeed * Time.deltaTime;
         }
+            
     }
 
     private void OnDrawGizmosSelected()

@@ -100,9 +100,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2466631908756141974}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6870214288879314982}
   m_SourcePrefab: {fileID: 100100000, guid: f1ba3e2031b6b1a40ad0e6a87e646111, type: 3}
 --- !u!4 &3503309982136984671 stripped
 Transform:
@@ -161,7 +158,19 @@ MonoBehaviour:
   _destroyDelay: 2
   animator: {fileID: 2341321052468350191}
   controller: {fileID: 6286645760996730423}
+  _magnetRadius: 5
+  _magnetSpeed: 10
+  _coinLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  magnetActive: 0
   isPowerUpOn: 0
+  _lantern: {fileID: 0}
+  _lanternSlideYOffset: -0.35
+  _lanternLerpSpeed: 10
+  targetRenderer: {fileID: 0}
+  speedColer: {r: 0, g: 0, b: 1, a: 1}
+  magnetColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &2466631908756141974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,24 +198,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6870214288879314982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4311512139604606693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e10eb99436752d4e81509e5cae44b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagnetPowerUp
-  _magnetRadius: 5
-  _magnetSpeed: 10
-  _coinLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  magnetActive: 0
 --- !u!1001 &8148312166282670462
 PrefabInstance:
   m_ObjectHideFlags: 0

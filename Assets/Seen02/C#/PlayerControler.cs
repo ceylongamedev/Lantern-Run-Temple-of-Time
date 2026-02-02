@@ -34,7 +34,23 @@ public class PlayerControler : MonoBehaviour
     private Vector3 _originalCenter;
     private float _targetHeight;
 
+    [Header("Magnet Settings")]
+    [SerializeField] private float _magnetRadius = 5f;
+    [SerializeField] private float _magnetSpeed = 10f;
+    [SerializeField] private LayerMask _coinLayer;
+    public bool magnetActive = false;
     public bool isPowerUpOn = false;
+
+    [Header("Lantern")]
+    [SerializeField] private Transform _lantern;
+    [SerializeField] private float _lanternSlideYOffset = -0.35f;
+    [SerializeField] private float _lanternLerpSpeed = 10f;
+    private Vector3 _lanternOriginalLocalPos;
+
+    [Header("Renderer")]
+    [SerializeField] private Renderer targetRenderer;
+    [SerializeField] private Color speedColer = Color.blue;
+    [SerializeField] private Color magnetColor = Color.red;
 
     private void Awake()
     {
@@ -45,16 +61,80 @@ public class PlayerControler : MonoBehaviour
 
         _originalHeight = controller.height;
         _originalCenter = controller.center;
+
+
+        if (_lantern != null)
+            _lanternOriginalLocalPos = _lantern.localPosition;
     }
 
     private void Update()
     {
+        
+        //SpeedUp
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            isPowerUpOn = !isPowerUpOn;
+        }
+        if (isPowerUpOn)
+        {
+            targetRenderer.material.SetFloat("_ON", 1f);
+            targetRenderer.material.SetColor("BottomColor", speedColer);
+        }
+        else if (!isPowerUpOn)
+        {
+            targetRenderer.material.SetFloat("_ON", 0f);
+        }
+        //Magnet
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            magnetActive = !magnetActive;
+        }
+            
+
         if (_isDead) return;
 
         HandleInput();
         HandleMovement();
         ApplyGravity();
+
+        if (!magnetActive) return;
+
+        Collider[] coins = Physics.OverlapSphere(transform.position, _magnetRadius, _coinLayer);
+
+        foreach (Collider coin in coins)
+        {
+            if (coin == null) continue;
+            Vector3 direction = (transform.position - coin.transform.position).normalized;
+            coin.transform.position += direction * _magnetSpeed * Time.deltaTime;
+        }
     }
+
+    private IEnumerator MoveLanternY(float targetYOffset)
+    {
+        if (_lantern == null) yield break;
+
+        Vector3 start = _lantern.localPosition;
+        Vector3 target = _lanternOriginalLocalPos + Vector3.up * targetYOffset;
+
+        while (Vector3.Distance(_lantern.localPosition, target) > 0.01f)
+        {
+            _lantern.localPosition = Vector3.Lerp(
+                _lantern.localPosition,
+                target,
+                Time.deltaTime * _lanternLerpSpeed
+            );
+            yield return null;
+        }
+
+        _lantern.localPosition = target;
+    }
+
+    private void ResetLantern()
+    {
+        if (_lantern == null) return;
+        StartCoroutine(MoveLanternY(0f));
+    }//Lantern
 
     private void LateUpdate()
     {
@@ -153,6 +233,8 @@ public class PlayerControler : MonoBehaviour
 
     private IEnumerator StandUpThenJump()
     {
+        ResetLantern();
+
         while (Mathf.Abs(controller.height - _originalHeight) > 0.01f)
         {
             controller.height = Mathf.Lerp(
@@ -203,9 +285,11 @@ public class PlayerControler : MonoBehaviour
         animator.SetBool("isSliding", true);
         animator.SetBool("isRunning", false);
 
+        StartCoroutine(MoveLanternY(_lanternSlideYOffset));
+
         _targetHeight = _originalHeight * 0.5f;
 
-        //crouch
+        // crouch
         while (Mathf.Abs(controller.height - _targetHeight) > 0.01f)
         {
             controller.height = Mathf.Lerp(
@@ -225,7 +309,7 @@ public class PlayerControler : MonoBehaviour
 
         yield return new WaitForSeconds(_slideDuration);
 
-        // Smoth standup
+        // stand up
         while (Mathf.Abs(controller.height - _originalHeight) > 0.01f)
         {
             controller.height = Mathf.Lerp(
@@ -245,6 +329,8 @@ public class PlayerControler : MonoBehaviour
 
         controller.height = _originalHeight;
         controller.center = _originalCenter;
+
+        ResetLantern();
 
         animator.SetBool("isSliding", false);
         animator.SetBool("isRunning", true);
@@ -272,4 +358,11 @@ public class PlayerControler : MonoBehaviour
         yield return new WaitForSeconds(_destroyDelay);
         Debug.Log("Is Player Dead");
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, _magnetRadius);
+    }
+
 }//Class

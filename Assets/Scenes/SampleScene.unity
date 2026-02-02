@@ -1255,7 +1255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c067a4bd3ebafe940abecb8862389e9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6000004
+      value: 0.408
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c067a4bd3ebafe940abecb8862389e9f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1492,6 +1492,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7361159742260735554, guid: 8d473f58812fc244b97968f563a1c253, type: 3}
   m_PrefabInstance: {fileID: 1084791144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1368319248 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2998546058090000796, guid: cde1768477805914688f26ea273f4346, type: 3}
+  m_PrefabInstance: {fileID: 2057311359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1525166260
 PrefabInstance:
@@ -2039,6 +2044,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _magnetSpeed
       value: 20
       objectReference: {fileID: 0}
@@ -2046,6 +2055,14 @@ PrefabInstance:
       propertyPath: magnetActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: magnetColer.g
+      value: 0.38975367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: targetRenderer
+      value: 
+      objectReference: {fileID: 1368319248}
     - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _coinLayer.m_Bits
       value: 64
@@ -2055,8 +2072,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _lantern
+      value: 
+      objectReference: {fileID: 573885581}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _material
+      value: 
+      objectReference: {fileID: 2100000, guid: 74ab98c5b1ba3804ea8630d8b0334990, type: 2}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: floatName
+      value: BottomColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _jumpForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: isPowerUpOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _magnetSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: speedColer.b
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: speedColer.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: speedColer.r
+      value: 0.30655926
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _stepDistanse
@@ -2067,15 +2116,24 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: targetRenderer
+      value: 
+      objectReference: {fileID: 1368319248}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _coinLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _lanternSlideYOffset
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _standUpJumpLerpSpeed
       value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3503309982136984671, guid: cde1768477805914688f26ea273f4346, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 573885581}
     - targetCorrespondingSourceObject: {fileID: 3503309982136984671, guid: cde1768477805914688f26ea273f4346, type: 3}
       insertIndex: -1
       addedObject: {fileID: 677037027}
@@ -2085,6 +2143,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3503309982136984671, guid: cde1768477805914688f26ea273f4346, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1551418150}
+    - targetCorrespondingSourceObject: {fileID: 3503309982136984671, guid: cde1768477805914688f26ea273f4346, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 573885581}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde1768477805914688f26ea273f4346, type: 3}
 --- !u!1660057539 &9223372036854775807
