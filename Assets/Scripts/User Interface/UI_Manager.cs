@@ -135,6 +135,7 @@ public class UI_Manager : MonoBehaviour
         if(paused)
         {
             PauseState(false);
+            Time.timeScale = 1;
         }
         StartCoroutine(LoadSceneAsync(index));
    
