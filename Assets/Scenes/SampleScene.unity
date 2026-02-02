@@ -2147,11 +2147,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1789345853 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 2427733809525982794, guid: cde1768477805914688f26ea273f4346, type: 3}
-  m_PrefabInstance: {fileID: 2057311359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982447013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2364,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2427733809525982794, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2427733809525982794, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: m_IsTrigger
@@ -2432,13 +2427,17 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: magnetActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870214288879314982, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _coinLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: capsule
       value: 
-      objectReference: {fileID: 1789345853}
+      objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _jumpForce
       value: 10

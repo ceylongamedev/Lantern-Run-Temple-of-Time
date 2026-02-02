@@ -28,7 +28,6 @@ public class PlayerControler : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
-    [SerializeField] private CapsuleCollider capsule;
 
     private float _lockz;
     private float _originalHeight;
@@ -204,40 +203,48 @@ public class PlayerControler : MonoBehaviour
         animator.SetBool("isSliding", true);
         animator.SetBool("isRunning", false);
 
-        _targetHeight = _originalHeight * 0.5f; 
+        _targetHeight = _originalHeight * 0.5f;
 
-        float originalCapsuleHeight = capsule.height; 
-        Vector3 originalCapsuleCenter = capsule.center; 
-
+        //crouch
         while (Mathf.Abs(controller.height - _targetHeight) > 0.01f)
         {
-            controller.height = Mathf.Lerp(controller.height, _targetHeight, Time.deltaTime * _heightLerpSpeed);
-            controller.center = new Vector3(_originalCenter.x, controller.height / 2f, _originalCenter.z);
+            controller.height = Mathf.Lerp(
+                controller.height,
+                _targetHeight,
+                Time.deltaTime * _heightLerpSpeed
+            );
 
-            capsule.height = Mathf.Lerp(capsule.height, _targetHeight, Time.deltaTime * _heightLerpSpeed);
-            capsule.center = new Vector3(originalCapsuleCenter.x, capsule.height / 2f, originalCapsuleCenter.z);
+            controller.center = new Vector3(
+                _originalCenter.x,
+                controller.height / 2f,
+                _originalCenter.z
+            );
 
             yield return null;
         }
 
-        yield return new WaitForSeconds(_slideDuration); 
+        yield return new WaitForSeconds(_slideDuration);
 
+        // Smoth standup
         while (Mathf.Abs(controller.height - _originalHeight) > 0.01f)
         {
+            controller.height = Mathf.Lerp(
+                controller.height,
+                _originalHeight,
+                Time.deltaTime * _heightLerpSpeed
+            );
 
-            controller.height = Mathf.Lerp(controller.height, _originalHeight, Time.deltaTime * _heightLerpSpeed);
-            controller.center = new Vector3(_originalCenter.x, controller.height / 2f, _originalCenter.z);
-
-            capsule.height = Mathf.Lerp(capsule.height, _originalHeight, Time.deltaTime * _heightLerpSpeed);
-            capsule.center = new Vector3(originalCapsuleCenter.x, capsule.height / 2f, originalCapsuleCenter.z);
+            controller.center = new Vector3(
+                _originalCenter.x,
+                controller.height / 2f,
+                _originalCenter.z
+            );
 
             yield return null;
         }
 
         controller.height = _originalHeight;
         controller.center = _originalCenter;
-        capsule.height = _originalHeight;
-        capsule.center = originalCapsuleCenter;
 
         animator.SetBool("isSliding", false);
         animator.SetBool("isRunning", true);
