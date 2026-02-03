@@ -29,6 +29,8 @@ public class UI_Manager : MonoBehaviour
     private int currentHearts;
     private int giftsCollected;
 
+    public bool isPlayerdead;
+
 
     bool paused = false;
     private void Awake()
@@ -54,7 +56,7 @@ public class UI_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && AllowPause && !paused)
+        if ((Input.GetKeyDown(KeyCode.Escape) && AllowPause && !paused))
         {
             PauseState(!paused);
         }
@@ -135,10 +137,11 @@ public class UI_Manager : MonoBehaviour
         if(paused)
         {
             PauseState(false);
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
         }
         StartCoroutine(LoadSceneAsync(index));
-   
+        Time.timeScale = 1;
+
     }
 
     public void StartPowerUp(int time)

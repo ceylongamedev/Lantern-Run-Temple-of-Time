@@ -52,6 +52,8 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private Color speedColer = Color.blue;
     [SerializeField] private Color magnetColor = Color.red;
 
+    [SerializeField] private UI_Manager uiScript;
+
     private void Awake()
     {
         animator.applyRootMotion = false;
@@ -65,6 +67,12 @@ public class PlayerControler : MonoBehaviour
 
         if (_lantern != null)
             _lanternOriginalLocalPos = _lantern.localPosition;
+    }
+
+    private void Start()
+    {
+        magnetActive = false;
+        isPowerUpOn = false;
     }
 
     private void Update()
@@ -356,7 +364,12 @@ public class PlayerControler : MonoBehaviour
     private IEnumerator DestroyPlayer()
     {
         yield return new WaitForSeconds(_destroyDelay);
-        Debug.Log("Is Player Dead");
+        
+        if (uiScript)
+        {
+            uiScript.EndGame(true);
+            Debug.Log("Is Player Dead");
+        }
     }
 
     private void OnDrawGizmosSelected()

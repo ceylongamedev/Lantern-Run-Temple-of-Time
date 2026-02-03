@@ -1298,6 +1298,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c067a4bd3ebafe940abecb8862389e9f, type: 3}
+--- !u!114 &1006639192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5855690582513446838, guid: a50d75cb67e800d4b9a5baa5aae47b1e, type: 3}
+  m_PrefabInstance: {fileID: 1044700857}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d793096b049cc6545b418e842925a9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
 --- !u!1001 &1044700857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2076,6 +2087,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 573885581}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: uiScript
+      value: 
+      objectReference: {fileID: 1006639192}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _material
       value: 
       objectReference: {fileID: 2100000, guid: 74ab98c5b1ba3804ea8630d8b0334990, type: 2}
@@ -2089,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: isPowerUpOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _magnetSpeed

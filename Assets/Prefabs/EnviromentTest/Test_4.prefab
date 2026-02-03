@@ -817,8 +817,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999999, y: 0.34570804, z: 0.9999998}
+  m_Center: {x: 0, y: 0.327147, z: 0}
 --- !u!1 &2244975094413679113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 7842613396003499574}
   m_Layer: 0
   m_Name: Killplane (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2003,7 +2003,7 @@ GameObject:
   - component: {fileID: 913467913408354269}
   m_Layer: 0
   m_Name: Killplane (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2207,7 +2207,7 @@ GameObject:
   - component: {fileID: 8911765340784368768}
   m_Layer: 0
   m_Name: Killplane (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2546,7 +2546,7 @@ GameObject:
   - component: {fileID: 3976115267241767881}
   m_Layer: 0
   m_Name: Killplane (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
