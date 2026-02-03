@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,32 +14,65 @@ public class PickupManager : MonoBehaviour
     public List<Transform> lanternSpawnPoints;
     private GameObject spawnedLantern;
 
-    [Header("Obstacle")]
+    [Header("Obstacle 1")]
     public List<GameObject> obstaclePrefabs;
     public List<Transform> obstacleSpawnPoints;
     private GameObject spawnedObstacle;
 
+    [Header("Obstacle 2")]
+    public List<GameObject> obstacle2Prefabs;
+    public List<Transform> obstacle2SpawnPoints;
+    private GameObject spawnedObstacle2;
+
+    [Header("Objects Spawn Settions")]
+    private float spawnDelay = 5f;
+
+    private bool hasSpawnedInitially = false;
+
     private void OnEnable()
     {
+
+        if (!hasSpawnedInitially)
+        {
+             
+            StartCoroutine(DelayedInitialSpawn());
+        }
+        else
+        {
+            SpawnCoins();
+            SpawnLantern();
+            SpawnObstacle();
+            SpawnObstacle2();   // NEW
+        }
+    }
+
+    private IEnumerator DelayedInitialSpawn()
+    {
+        yield return new WaitForSeconds(spawnDelay);
+        hasSpawnedInitially = true;
         SpawnCoins();
         SpawnLantern();
         SpawnObstacle();
+        SpawnObstacle2();
     }
 
     private void Update()
     {
-        //if (Input.GetKeyUp(KeyCode.C))
-        //{
-        //    ClearCoins();
-        //    ClearLantern();
-        //    ClearObstacle();
-
-        //    SpawnCoins();
-        //    SpawnLantern();
-        //    SpawnObstacle();
-        //}
+        // if (Input.GetKeyUp(KeyCode.C))
+        // {
+        //     ClearCoins();
+        //     ClearLantern();
+        //     ClearObstacle();
+        //     ClearObstacle2();
+        //
+        //     SpawnCoins();
+        //     SpawnLantern();
+        //     SpawnObstacle();
+        //     SpawnObstacle2();
+        // }
     }
 
+    #region Coins
     public void SpawnCoins()
     {
         ClearCoins();
@@ -47,15 +81,8 @@ public class PickupManager : MonoBehaviour
 
         foreach (Transform spawnPoint in coinSpawnPoints)
         {
-            GameObject prefab =
-                coinPrefabs[Random.Range(0, coinPrefabs.Count)];
-
-            GameObject coin = Instantiate(
-                prefab,
-                spawnPoint.position,
-                spawnPoint.rotation
-            );
-
+            GameObject prefab = coinPrefabs[Random.Range(0, coinPrefabs.Count)];
+            GameObject coin = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
             coin.transform.SetParent(spawnPoint);
             coinSpawnedPickups.Add(coin);
         }
@@ -65,63 +92,69 @@ public class PickupManager : MonoBehaviour
     {
         foreach (GameObject coin in coinSpawnedPickups)
         {
-            if (coin != null)
-                Destroy(coin);
+            if (coin != null) Destroy(coin);
         }
         coinSpawnedPickups.Clear();
     }
+    #endregion
 
+    #region Lantern
     public void SpawnLantern()
     {
         ClearLantern();
 
         if (lanternPrefabs.Count == 0 || lanternSpawnPoints.Count == 0) return;
 
-        Transform randomPoint =
-            lanternSpawnPoints[Random.Range(0, lanternSpawnPoints.Count)];
+        Transform randomPoint = lanternSpawnPoints[Random.Range(0, lanternSpawnPoints.Count)];
+        GameObject prefab = lanternPrefabs[Random.Range(0, lanternPrefabs.Count)];
 
-        GameObject prefab =
-            lanternPrefabs[Random.Range(0, lanternPrefabs.Count)];
-
-        spawnedLantern = Instantiate(
-            prefab,
-            randomPoint.position,
-            randomPoint.rotation
-        );
-
+        spawnedLantern = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
         spawnedLantern.transform.SetParent(randomPoint);
     }
 
     public void ClearLantern()
     {
-        if (spawnedLantern != null)
-            Destroy(spawnedLantern);
+        if (spawnedLantern != null) Destroy(spawnedLantern);
     }
+    #endregion
 
+    #region Obstacle 1
     public void SpawnObstacle()
     {
         ClearObstacle();
 
         if (obstaclePrefabs.Count == 0 || obstacleSpawnPoints.Count == 0) return;
 
-        Transform randomPoint =
-            obstacleSpawnPoints[Random.Range(0, obstacleSpawnPoints.Count)];
+        Transform randomPoint = obstacleSpawnPoints[Random.Range(0, obstacleSpawnPoints.Count)];
+        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
 
-        GameObject prefab =
-            obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
-
-        spawnedObstacle = Instantiate(
-            prefab,
-            randomPoint.position,
-            randomPoint.rotation
-        );
-
+        spawnedObstacle = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
         spawnedObstacle.transform.SetParent(randomPoint);
     }
 
     public void ClearObstacle()
     {
-        if (spawnedObstacle != null)
-            Destroy(spawnedObstacle);
+        if (spawnedObstacle != null) Destroy(spawnedObstacle);
     }
+    #endregion
+
+    #region Obstacle 2
+    public void SpawnObstacle2()
+    {
+        ClearObstacle2();
+
+        if (obstacle2Prefabs.Count == 0 || obstacle2SpawnPoints.Count == 0) return;
+
+        Transform randomPoint = obstacle2SpawnPoints[Random.Range(0, obstacle2SpawnPoints.Count)];
+        GameObject prefab = obstacle2Prefabs[Random.Range(0, obstacle2Prefabs.Count)];
+
+        spawnedObstacle2 = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
+        spawnedObstacle2.transform.SetParent(randomPoint);
+    }
+
+    public void ClearObstacle2()
+    {
+        if (spawnedObstacle2 != null) Destroy(spawnedObstacle2);
+    }
+    #endregion
 }
