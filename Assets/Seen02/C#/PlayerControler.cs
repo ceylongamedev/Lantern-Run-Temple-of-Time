@@ -50,7 +50,7 @@ public class PlayerControler : MonoBehaviour
     [Header("Renderer")]
     [SerializeField] private Renderer targetRenderer;
     [SerializeField] private Color speedColer = Color.blue;
-    [SerializeField] private Color magnetColor = Color.red;
+    [SerializeField] private GameObject magnet;
 
     [SerializeField] private UI_Manager uiScript;
 
@@ -106,8 +106,13 @@ public class PlayerControler : MonoBehaviour
         HandleMovement();
         ApplyGravity();
 
-        if (!magnetActive) return;
+        if (!magnetActive)
+        {
+            magnet.SetActive(false);
+            return;
+        }
 
+        magnet.SetActive(true);
         Collider[] coins = Physics.OverlapSphere(transform.position, _magnetRadius, _coinLayer);
 
         foreach (Collider coin in coins)
