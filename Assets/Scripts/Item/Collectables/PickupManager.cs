@@ -24,17 +24,19 @@ public class PickupManager : MonoBehaviour
     public List<Transform> obstacle2SpawnPoints;
     private GameObject spawnedObstacle2;
 
-    [Header("Objects Spawn Settions")]
-    private float spawnDelay = 5f;
+    [Header("Power ups")]
+    public List<GameObject> powerupsPrefabs;
+    public List<Transform> powerupSpawnPoints;
+    private GameObject spawnedPowerup;
 
+    [Header("Objects Spawn Settings")]
+    private float spawnDelay = 5f;
     private bool hasSpawnedInitially = false;
 
     private void OnEnable()
     {
-
         if (!hasSpawnedInitially)
         {
-             
             StartCoroutine(DelayedInitialSpawn());
         }
         else
@@ -42,7 +44,8 @@ public class PickupManager : MonoBehaviour
             SpawnCoins();
             SpawnLantern();
             SpawnObstacle();
-            SpawnObstacle2();   // NEW
+            SpawnObstacle2();
+            SpawnPowerups();   // NEW
         }
     }
 
@@ -50,26 +53,12 @@ public class PickupManager : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
         hasSpawnedInitially = true;
+
         SpawnCoins();
         SpawnLantern();
         SpawnObstacle();
         SpawnObstacle2();
-    }
-
-    private void Update()
-    {
-        // if (Input.GetKeyUp(KeyCode.C))
-        // {
-        //     ClearCoins();
-        //     ClearLantern();
-        //     ClearObstacle();
-        //     ClearObstacle2();
-        //
-        //     SpawnCoins();
-        //     SpawnLantern();
-        //     SpawnObstacle();
-        //     SpawnObstacle2();
-        // }
+        SpawnPowerups();  
     }
 
     #region Coins
@@ -155,6 +144,26 @@ public class PickupManager : MonoBehaviour
     public void ClearObstacle2()
     {
         if (spawnedObstacle2 != null) Destroy(spawnedObstacle2);
+    }
+    #endregion
+
+    #region Obstacle 3
+    public void SpawnPowerups()
+    {
+        ClearObstacle3();
+
+        if (powerupsPrefabs.Count == 0 || powerupSpawnPoints.Count == 0) return;
+
+        Transform randomPoint = powerupSpawnPoints[Random.Range(0, powerupSpawnPoints.Count)];
+        GameObject prefab = powerupsPrefabs[Random.Range(0, powerupsPrefabs.Count)];
+
+        spawnedPowerup = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
+        spawnedPowerup.transform.SetParent(randomPoint);
+    }
+
+    public void ClearObstacle3()
+    {
+        if (spawnedPowerup != null) Destroy(spawnedPowerup);
     }
     #endregion
 }
