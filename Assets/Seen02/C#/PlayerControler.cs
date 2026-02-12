@@ -54,6 +54,10 @@ public class PlayerControler : MonoBehaviour
 
     [SerializeField] private UI_Manager uiScript;
 
+    [Header("Lantern To Enable")]
+    public ParticleSystem hitParticle;
+    public float disableAfter = 2f;
+
     private void Awake()
     {
         animator.applyRootMotion = false;
@@ -355,6 +359,23 @@ public class PlayerControler : MonoBehaviour
     {
         if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
             Die();
+
+        if (other.CompareTag("Lantern")) 
+        {
+            ActivateObjects();      
+        }
+    }
+
+    private void ActivateObjects()
+    {
+        if (hitParticle != null)
+            hitParticle.Play();
+
+        Invoke(nameof(DeactivateObjects), disableAfter);
+    }
+    private void DeactivateObjects()
+    {
+        hitParticle.Stop();
     }
 
     private void Die()
