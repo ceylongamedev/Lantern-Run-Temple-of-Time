@@ -3,7 +3,22 @@ guid: 8cbce9c5509a86e42b171f47afc90f98
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EthPawura
+    second: {fileID: 2100000, guid: 13efcf1dca23a7d4e8fea640185b8372, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gray stone moss floor
+    second: {fileID: 2100000, guid: 38cccdd7ec2b421419c51e75630a6a63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WalakuluBemma
+    second: {fileID: 2100000, guid: 84b9354fe37195141b65f39ec4cc9da0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

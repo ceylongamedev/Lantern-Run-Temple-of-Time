@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 7330989142415364145}
   - component: {fileID: 7603148140689077931}
   - component: {fileID: 7381856404647359469}
+  - component: {fileID: 8360446304872573040}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -200,6 +201,20 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &8360446304872573040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7603400343395535474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a73af81f158fa64383b8f83dfbb049c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightBlink
+  _maxValue: 1.1
+  _minValue: 0.1
 --- !u!1001 &5700050028217962128
 PrefabInstance:
   m_ObjectHideFlags: 0
