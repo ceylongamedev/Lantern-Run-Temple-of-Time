@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3086677887385568627}
   - component: {fileID: 6547775795995762328}
+  - component: {fileID: 3072261805472826498}
   m_Layer: 0
   m_Name: Enviroment Manager
   m_TagString: Untagged
@@ -46,10 +47,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndlessEnvironment
   cameraTransform: {fileID: 0}
   runSpeed: 10
-  spawnAheadDistance: 100
-  despawnBehindDistance: 30
+  spawnAheadDistance: 140
+  despawnBehindDistance: 140
   tilePrefabs:
-  - {fileID: 5440151679889961201, guid: acea70b01f7f18f4f84e6fc0c5953e48, type: 3}
-  - {fileID: 700749768835710915, guid: 91efa21848b40224da2da096a129a9d6, type: 3}
-  - {fileID: 5118007936842391027, guid: 7e5524bc9999681478779cf0e63318fe, type: 3}
-  poolSizePerTile: 2
+  - {fileID: 3396025489911520323, guid: 6e197a5ef54c0a6459c40d86a004aa0a, type: 3}
+  - {fileID: 5187617617541113960, guid: 6508ac28586c6744da4f05b3bbbeb0f0, type: 3}
+  - {fileID: 8944811106264251783, guid: 13a66e0461301a94488159cfa059ed6e, type: 3}
+  - {fileID: 6053818390380193838, guid: 36e112345eba7a5469065449a75fbb36, type: 3}
+  - {fileID: 4566156876016728147, guid: 24c296d620c59e04dac55e0c0ccd91a9, type: 3}
+  - {fileID: 7766112976215035512, guid: b7916f6a106cefc45accfb724fbb2441, type: 3}
+  - {fileID: 3353934333545890460, guid: b9635bc66e7df754dbbf4b1fe2edf40d, type: 3}
+  - {fileID: 8356699815592806686, guid: af493cd232528254a9a0b26af6bc234e, type: 3}
+  poolSizePerTile: 1
+--- !u!114 &3072261805472826498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506319164893272327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed497d5553e9f34a8fe2fc3be5d8feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinFlyEffect
+  targetIcon: {fileID: 0}
+  canvas: {fileID: 0}
+  flyingCoinPrefab: {fileID: 2983864147553297794, guid: 9c874b83dba781946b38587893098695, type: 3}
+  flyDuration: 0.5
+  curveHeight: 50

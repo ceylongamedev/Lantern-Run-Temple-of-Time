@@ -41,11 +41,6 @@ public class PickupItem : MonoBehaviour
         if (!other.CompareTag(playerTag)) return;
 
 
-        if (pickupEffect != null)
-        {
-            Instantiate(pickupEffect, transform.position, Quaternion.identity);
-        }
-
         switch (type)
         {
             case ItemType.Coin:
@@ -59,7 +54,7 @@ public class PickupItem : MonoBehaviour
             case ItemType.Obstacle:
                 break;
         }
-
+        
         Destroy(gameObject);
     }
 }

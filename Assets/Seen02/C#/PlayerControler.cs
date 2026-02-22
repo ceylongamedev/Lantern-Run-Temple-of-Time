@@ -58,6 +58,10 @@ public class PlayerControler : MonoBehaviour
     public ParticleSystem hitParticle;
     public float disableAfter = 2f;
 
+    [Header("Foot Dust")]
+    [SerializeField] private ParticleSystem footDust;
+
+
     private void Awake()
     {
         animator.applyRootMotion = false;
@@ -81,7 +85,6 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()
     {
-        
         //SpeedUp
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -109,6 +112,7 @@ public class PlayerControler : MonoBehaviour
         HandleInput();
         HandleMovement();
         ApplyGravity();
+        HandleFootDust();
 
         if (!magnetActive)
         {
@@ -124,6 +128,29 @@ public class PlayerControler : MonoBehaviour
             if (coin == null) continue;
             Vector3 direction = (transform.position - coin.transform.position).normalized;
             coin.transform.position += direction * _magnetSpeed * Time.deltaTime;
+        }
+    }
+
+    private void HandleFootDust()
+    {
+        if (footDust == null) return;
+
+        if (_isDead)
+        {
+            if (footDust.isPlaying)
+                footDust.Stop();
+            return;
+        }
+
+        if (controller.isGrounded && !_isSliding)
+        {
+            if (!footDust.isPlaying)
+                footDust.Play();
+        }
+        else
+        {
+            if (footDust.isPlaying)
+                footDust.Stop();
         }
     }
 
@@ -357,6 +384,10 @@ public class PlayerControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Coin"))
+        {
+            CoinFlyEffect.Instance.PlayFlyEffect(transform.position);// Coing flay
+        }
         if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
             Die();
 
