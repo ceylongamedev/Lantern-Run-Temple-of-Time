@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CoinFlyEffect : MonoBehaviour
@@ -11,28 +11,52 @@ public class CoinFlyEffect : MonoBehaviour
     public GameObject flyingCoinPrefab;
 
     [Header("Settings")]
-    public float flyDuration = 0.6f;
-    public float curveHeight = 50f; 
+    public float flyDuration = 0.7f;
+    public float curveHeight = 80f;
+    public float spreadRadius = 60f;
+    public float delayBetweenCoins = 0.05f;
+
+    private Camera cam;
 
     private void Awake()
     {
         Instance = this;
+        cam = Camera.main;
     }
 
-    public void PlayFlyEffect(Vector3 worldPosition)
+    public void PlayFlyEffect(Vector3 worldPosition, int amount = 1)
     {
-        StartCoroutine(Fly(worldPosition));
+        StartCoroutine(FlyMultiple(worldPosition, amount));
     }
 
-    private IEnumerator Fly(Vector3 worldPos)
+    private IEnumerator FlyMultiple(Vector3 worldPos, int amount)
     {
-        if (flyingCoinPrefab == null || targetIcon == null || canvas == null) yield break;
+        for (int i = 0; i < amount; i++)
+        {
+            StartCoroutine(FlySingle(worldPos));
+            yield return new WaitForSeconds(delayBetweenCoins);
+        }
+    }
+
+    private IEnumerator FlySingle(Vector3 worldPos)
+    {
+        if (flyingCoinPrefab == null || targetIcon == null || canvas == null)
+            yield break;
 
         GameObject flyingCoin = Instantiate(flyingCoinPrefab, canvas.transform);
         RectTransform rect = flyingCoin.GetComponent<RectTransform>();
 
-        Vector3 startPos = Camera.main.WorldToScreenPoint(worldPos);
-        Vector3 endPos = targetIcon.position;
+        Vector3 screenStart = cam.WorldToScreenPoint(worldPos);
+
+        Vector2 randomCircle = Random.insideUnitCircle * spreadRadius;
+        screenStart += new Vector3(randomCircle.x, randomCircle.y, 0);
+
+        Vector3 screenEnd = targetIcon.position;
+
+        //add randm offset
+        screenEnd += new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0);
+
+        float randomCurve = Random.Range(0.7f, 1.3f) * curveHeight;
 
         float time = 0f;
 
@@ -40,14 +64,17 @@ public class CoinFlyEffect : MonoBehaviour
         {
             time += Time.deltaTime;
             float t = time / flyDuration;
-            float smoothT = t * t * (3f - 2f * t);
-            Vector3 curveOffset = Vector3.up * Mathf.Sin(smoothT * Mathf.PI) * curveHeight;
-            rect.position = Vector3.Lerp(startPos, endPos, smoothT) + curveOffset;
+
+            float smoothT = Mathf.SmoothStep(0, 1, t);
+
+            Vector3 curveOffset = Vector3.up * Mathf.Sin(smoothT * Mathf.PI) * randomCurve;
+
+            rect.position = Vector3.Lerp(screenStart, screenEnd, smoothT) + curveOffset;
 
             yield return null;
         }
 
-        rect.position = endPos;
+
         Destroy(flyingCoin);
     }
 }//Class

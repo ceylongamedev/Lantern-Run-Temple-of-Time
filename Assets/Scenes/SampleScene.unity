@@ -2083,6 +2083,14 @@ PrefabInstance:
       propertyPath: targetIcon
       value: 
       objectReference: {fileID: 1949597719}
+    - target: {fileID: 3072261805472826498, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: curveHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072261805472826498, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
+      propertyPath: flyDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3086677887385568627, guid: 24af8178b4f3507438384b4dac7fc836, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.94148
