@@ -157,8 +157,13 @@ public class PickupManager : MonoBehaviour
         Transform randomPoint = powerupSpawnPoints[Random.Range(0, powerupSpawnPoints.Count)];
         GameObject prefab = powerupsPrefabs[Random.Range(0, powerupsPrefabs.Count)];
 
-        spawnedPowerup = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
-        spawnedPowerup.transform.SetParent(randomPoint);
+        float _Chance = Random.value;
+        if (_Chance <= 0.2)
+        {
+            spawnedPowerup = Instantiate(prefab, randomPoint.position, prefab.transform.rotation);
+            spawnedPowerup.transform.SetParent(randomPoint);
+        }
+
     }
 
     public void ClearObstacle3()
