@@ -106,7 +106,7 @@ public class PlayerControler : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.E))
         //{
-            magnetActive = !magnetActive;
+            //magnetActive = !magnetActive;
         //}
             
 
@@ -403,11 +403,13 @@ public class PlayerControler : MonoBehaviour
         {
             magnetActive = true;
             Invoke(nameof(DisableMagnet), _magnetDuration);
+            Destroy(other.gameObject);
         }
         if (other.CompareTag("SpeedUP"))
         {
             isPowerUpOn = true;
             Invoke(nameof(DisableSpeed), _speedUpDuration);
+            Destroy(other.gameObject);
         }
     }
 
