@@ -137,6 +137,7 @@ public class PickupManager : MonoBehaviour
         Transform randomPoint = obstacle2SpawnPoints[Random.Range(0, obstacle2SpawnPoints.Count)];
         GameObject prefab = obstacle2Prefabs[Random.Range(0, obstacle2Prefabs.Count)];
 
+        Debug.Log($"Spawning Obstacle 2 at {randomPoint.position} using prefab {prefab.name}");
         spawnedObstacle2 = Instantiate(prefab, randomPoint.position, randomPoint.rotation);
         spawnedObstacle2.transform.SetParent(randomPoint);
     }

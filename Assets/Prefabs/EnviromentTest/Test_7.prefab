@@ -1889,7 +1889,6 @@ MonoBehaviour:
   - {fileID: 1005018169356572779, guid: 8986324ad7f1bcf41b7f726f4eb9d91a, type: 3}
   obstacle2SpawnPoints:
   - {fileID: 19645876412754713}
-  - {fileID: 0}
   - {fileID: 6928808964066531592}
   - {fileID: 6020235121795746450}
   - {fileID: 9204758432962226617}

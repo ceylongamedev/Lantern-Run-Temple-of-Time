@@ -1432,6 +1432,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &809014779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c067a4bd3ebafe940abecb8862389e9f, type: 3}
+  m_PrefabInstance: {fileID: 915838711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &813462543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2680,6 +2685,10 @@ PrefabInstance:
       propertyPath: _stepDistanse
       value: 1.8
       objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: _LnaternObject
+      value: 
+      objectReference: {fileID: 809014779}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _slideDuration
       value: 0.1
