@@ -1844,6 +1844,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7545d43e70fed1744b0dd9e863d4ba65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupManager
+  player: {fileID: 0}
+  minSpawnDistance: 6
+  maxSpawnAttempts: 10
   coinPrefabs:
   - {fileID: 1160249968776288181, guid: 11007191ccd792345a5b3aaf8f6bf527, type: 3}
   coinSpawnPoints:
@@ -1889,7 +1892,6 @@ MonoBehaviour:
   - {fileID: 1005018169356572779, guid: 8986324ad7f1bcf41b7f726f4eb9d91a, type: 3}
   obstacle2SpawnPoints:
   - {fileID: 19645876412754713}
-  - {fileID: 0}
   - {fileID: 6928808964066531592}
   - {fileID: 6020235121795746450}
   - {fileID: 9204758432962226617}
@@ -1903,6 +1905,7 @@ MonoBehaviour:
   - {fileID: 4820693280956025036}
   - {fileID: 6411010361059647823}
   - {fileID: 7611376522280770492}
+  spawnDelay: 5
 --- !u!1 &3380359498730388088
 GameObject:
   m_ObjectHideFlags: 0
