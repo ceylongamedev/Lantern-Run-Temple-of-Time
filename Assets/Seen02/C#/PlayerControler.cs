@@ -40,12 +40,15 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private LayerMask _coinLayer;
     public bool magnetActive = false;
     public bool isPowerUpOn = false;
+    [SerializeField] private float _magnetDuration = 10f;
+    [SerializeField] private float _speedUpDuration = 10f;
 
     [Header("Lantern")]
     [SerializeField] private Transform _lantern;
     [SerializeField] private float _lanternSlideYOffset = -0.35f;
     [SerializeField] private float _lanternLerpSpeed = 10f;
     private Vector3 _lanternOriginalLocalPos;
+    [SerializeField] private GameObject _LnaternObject;
 
     [Header("Renderer")]
     [SerializeField] private Renderer targetRenderer;
@@ -86,10 +89,10 @@ public class PlayerControler : MonoBehaviour
     private void Update()
     {
         //SpeedUp
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            isPowerUpOn = !isPowerUpOn;
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+            //isPowerUpOn = !isPowerUpOn;
+        //}
         if (isPowerUpOn)
         {
             targetRenderer.material.SetFloat("_ON", 1f);
@@ -101,10 +104,10 @@ public class PlayerControler : MonoBehaviour
         }
         //Magnet
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            magnetActive = !magnetActive;
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+            //magnetActive = !magnetActive;
+        //}
             
 
         if (_isDead) return;
@@ -395,6 +398,29 @@ public class PlayerControler : MonoBehaviour
         {
             ActivateObjects();      
         }
+
+        if (other.CompareTag("Mgnet"))
+        {
+            magnetActive = true;
+            Invoke(nameof(DisableMagnet), _magnetDuration);
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("SpeedUP"))
+        {
+            isPowerUpOn = true;
+            Invoke(nameof(DisableSpeed), _speedUpDuration);
+            Destroy(other.gameObject);
+        }
+    }
+
+    void DisableMagnet()
+    {
+        magnetActive = false;
+    }
+
+    void DisableSpeed()
+    {
+        isPowerUpOn = false;
     }
 
     private void ActivateObjects()
@@ -415,6 +441,7 @@ public class PlayerControler : MonoBehaviour
         animator.SetBool("isRunning", false);
         animator.SetBool("isDead", true);
         EndlessEnvironment.isPlayerDead = true;
+        _LnaternObject.SetActive(false);
         StartCoroutine(DestroyPlayer());
     }
 
@@ -428,6 +455,7 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("Is Player Dead");
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {

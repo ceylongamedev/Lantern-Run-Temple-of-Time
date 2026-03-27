@@ -30,6 +30,7 @@ public class TilePool
         }
 
         GameObject tile = pool.Dequeue();
+        Debug.Log($"TilePool: Providing tile {tile.name} from pool. Remaining pool size: {pool.Count}");
         tile.SetActive(true);
         return tile;
     }
