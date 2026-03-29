@@ -1495,6 +1495,7 @@ Transform:
   - {fileID: 4569998229893200888}
   - {fileID: 1294207161061064245}
   - {fileID: 2709241049135654063}
+  - {fileID: 160801831007503399}
   - {fileID: 3185429940195140792}
   - {fileID: 6226621841405110481}
   m_Father: {fileID: 0}
@@ -1537,6 +1538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7545d43e70fed1744b0dd9e863d4ba65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupManager
+  player: {fileID: 0}
+  minSpawnDistance: 6
+  maxSpawnAttempts: 10
   coinPrefabs:
   - {fileID: 1160249968776288181, guid: 11007191ccd792345a5b3aaf8f6bf527, type: 3}
   coinSpawnPoints:
@@ -1588,6 +1592,11 @@ MonoBehaviour:
   - {fileID: 478520071723620270}
   - {fileID: 5637646201788488023}
   - {fileID: 1914679561570355342}
+  specialObjectPrefabs:
+  - {fileID: 2385210850834561122, guid: f770faa2d317782419d740ce433bd343, type: 3}
+  specialObjectSpawnPoints:
+  - {fileID: 1176918082727276691}
+  spawnDelay: 5
 --- !u!1 &5444964079360843592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1967,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 252628494370106627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7433273230094530884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160801831007503399}
+  m_Layer: 0
+  m_Name: Mahasona spawn points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160801831007503399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433273230094530884}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1176918082727276691}
+  m_Father: {fileID: 1533904662258082920}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7562165449244946634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,6 +2243,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3299440945268668228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8446105340448416181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176918082727276691}
+  m_Layer: 0
+  m_Name: Mahasona spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1176918082727276691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8446105340448416181}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.13387205, z: -0, w: 0.9909986}
+  m_LocalPosition: {x: 4.74, y: 0.6, z: -15.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160801831007503399}
+  m_LocalEulerAnglesHint: {x: 0, y: -15.387, z: 0}
 --- !u!1 &8496484112470497275
 GameObject:
   m_ObjectHideFlags: 0

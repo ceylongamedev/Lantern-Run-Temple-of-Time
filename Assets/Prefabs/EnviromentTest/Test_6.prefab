@@ -62,6 +62,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6891600723526388698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &568005518339876246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5094853424683353932}
+  m_Layer: 0
+  m_Name: Mahasona spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5094853424683353932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568005518339876246}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.74, y: 0, z: -2.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6646934683685330068}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770354362723817173
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +756,38 @@ Transform:
   - {fileID: 5237778017774127640}
   m_Father: {fileID: 4530815323999019552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4292159930508785198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6646934683685330068}
+  m_Layer: 0
+  m_Name: Mahasona spawn points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6646934683685330068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292159930508785198}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5094853424683353932}
+  m_Father: {fileID: 4530815323999019552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4303604553247079548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1193,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1497679690255704704}
+  - {fileID: 6646934683685330068}
   - {fileID: 2072240075500345689}
   - {fileID: 2620032295228476320}
   - {fileID: 1609306055980501861}
@@ -1178,6 +1242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7545d43e70fed1744b0dd9e863d4ba65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupManager
+  player: {fileID: 0}
+  minSpawnDistance: 6
+  maxSpawnAttempts: 10
   coinPrefabs:
   - {fileID: 1160249968776288181, guid: 11007191ccd792345a5b3aaf8f6bf527, type: 3}
   coinSpawnPoints:
@@ -1219,6 +1286,11 @@ MonoBehaviour:
   - {fileID: 3927773026003538714}
   - {fileID: 4954955148154226549}
   - {fileID: 3468881013286112249}
+  specialObjectPrefabs:
+  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  specialObjectSpawnPoints:
+  - {fileID: 5094853424683353932}
+  spawnDelay: 5
 --- !u!1 &7831713787165833814
 GameObject:
   m_ObjectHideFlags: 0

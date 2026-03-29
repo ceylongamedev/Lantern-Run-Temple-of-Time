@@ -162,6 +162,38 @@ Transform:
   - {fileID: 8792426192669423047}
   m_Father: {fileID: 5690015313208993653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &833287659652227638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8841466871321322218}
+  m_Layer: 0
+  m_Name: Mahasona spawn points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8841466871321322218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833287659652227638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3576468253027214048}
+  m_Father: {fileID: 8679342765646838940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098895561763775216
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +258,7 @@ Transform:
   - {fileID: 8107915940460254325}
   - {fileID: 8233839072502834868}
   - {fileID: 6175168047956080832}
+  - {fileID: 8841466871321322218}
   m_Father: {fileID: 5690015313208993653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393486301322376632
@@ -655,6 +688,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5320106423144534513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2560391418412811803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3576468253027214048}
+  m_Layer: 0
+  m_Name: Mahasona spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3576468253027214048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560391418412811803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.22743851, z: -0, w: 0.97379243}
+  m_LocalPosition: {x: 5.254, y: 0.6, z: -5.337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8841466871321322218}
+  m_LocalEulerAnglesHint: {x: 0, y: -26.293, z: 0}
 --- !u!1 &2700690402972172004
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +908,10 @@ MonoBehaviour:
   - {fileID: 8660040098695981527}
   - {fileID: 5163950036140107521}
   - {fileID: 3457409118299538071}
+  specialObjectPrefabs:
+  - {fileID: 2385210850834561122, guid: f770faa2d317782419d740ce433bd343, type: 3}
+  specialObjectSpawnPoints:
+  - {fileID: 3576468253027214048}
   spawnDelay: 5
 --- !u!1 &3622807285731170797
 GameObject:
