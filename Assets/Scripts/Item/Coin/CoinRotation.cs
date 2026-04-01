@@ -5,9 +5,21 @@ public class CoinRotation : MonoBehaviour
     public float rotationSpeed = 50f;
     private bool isStarted = false;
 
+    public float[] _EEM;
+
+    private MeshRenderer _meshRenderer;
+
     private void OnEnable()
     {
         startRotating();
+    }
+
+    private void Start()
+    {
+        _meshRenderer = GetComponent<MeshRenderer>();
+        float value = Random.value;
+        if (value < 0.01f)
+            EEMaterial();
     }
 
     void Update()
@@ -20,6 +32,11 @@ public class CoinRotation : MonoBehaviour
     public void startRotating()
     {
         isStarted = true;
+    }
+
+    void EEMaterial()
+    {
+       // _meshRenderer.material = _EEM[Random.Range(0, _EEM.Length)];
     }
 
 }

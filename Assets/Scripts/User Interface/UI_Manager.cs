@@ -11,14 +11,19 @@ public class UI_Manager : MonoBehaviour
     [Header("Menu Objects")]
     [SerializeField] private GameObject InGameMenu;
     [SerializeField] private GameObject loadingScreen;
-    [SerializeField]private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private bool AllowPause;
 
     [Header("In game Hud Elements")]
-    [SerializeField] private TextMeshProUGUI giftText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI coinText;
+
+    [Header("End Game Hud Elements")]
     [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private TextMeshProUGUI giftAmountText;
+    [SerializeField] private TextMeshProUGUI coinsAmountText;
+    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private TextMeshProUGUI scoreAmountText;
     [SerializeField] private GameObject powerupParent;
     public Image powerUpFillImage;
 
@@ -27,7 +32,9 @@ public class UI_Manager : MonoBehaviour
 
 
     private int currentHearts;
-    private int giftsCollected;
+    private int coinsCollected;
+    private int distance;
+    private int score;
 
     public bool isPlayerdead;
 
@@ -44,11 +51,11 @@ public class UI_Manager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(countdownText != null)
+        if (countdownText != null)
         {
             countdownText.gameObject.SetActive(false);
         }
-        if(powerupParent != null)
+        if (powerupParent != null)
         {
             powerupParent.gameObject.SetActive(false);
         }
@@ -63,41 +70,47 @@ public class UI_Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            EndGame(true);
+            EndGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             StartPowerUp(5);
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) 
+        if (Input.GetKeyDown(KeyCode.B))
         {
-            updateGifts(1);
+            UpdateCoins(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            distance = distance + Random.Range(0, 500);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            UpdateScore(Random.Range(0, 500));
         }
     }
 
-    public void EndGame(bool didWin)
+    public void EndGame()
     {
         endScreen.SetActive(true);
         InGameMenu.SetActive(false);
         AllowPause = false;
-        if(didWin)
-        {
-           if(gameOverText != null && giftAmountText !=null)
-            {
-                gameOverText.text = ("Level Complete!");
-                giftAmountText.text = giftsCollected.ToString("0");
-            }
+         if (distanceText != null && coinsAmountText != null && scoreText != null)
+         {
+            distanceText.text = distance.ToString("0");
+            coinsAmountText.text = coinsCollected.ToString("0");
+            scoreAmountText.text = score.ToString("0");
         }
         else
         {
-            if (gameOverText != null && giftAmountText != null)
-            {
-                gameOverText.text = ("Game Over");
-                giftAmountText.text = giftsCollected.ToString("0");
-            }
+            Debug.LogError("Something havent been assigned properly in the UI Manager's end game ui elements");
         }
+        
+       
         Time.timeScale = 0f;
     }
     public void LoadScreenWithLoadingScreen(int index)
@@ -117,24 +130,12 @@ public class UI_Manager : MonoBehaviour
         {
             SceneLoader.Instance.LoadScene(index);
         }
-       
-    }
 
-    public void updateGifts(int amount)
-    {
-        if(giftText == null)
-        {
-            Debug.LogError("No Gift Text Assigned");
-            return;
-        }
-        giftsCollected = giftsCollected + amount;
-        giftText.text = giftsCollected.ToString();
     }
-
   
     public void LoadScene(int index)
     {
-        if(paused)
+        if (paused)
         {
             PauseState(false);
             //Time.timeScale = 1;
@@ -166,6 +167,15 @@ public class UI_Manager : MonoBehaviour
         powerupParent.gameObject.SetActive(false);
 
     }
+
+    public void UpdateScore(int scoreAmount)
+    {
+        if(scoreText != null)
+        {
+            score = score + scoreAmount;
+            scoreText.text = score.ToString();
+        }
+    }
     private System.Collections.IEnumerator LoadSceneAsync(int sceneIndex)
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneIndex);
@@ -174,6 +184,14 @@ public class UI_Manager : MonoBehaviour
         yield return null;
     }
 
+    public void UpdateCoins(int coina)
+    {
+        if(coinText != null)
+        {
+            coinsCollected = coinsCollected + coina;
+            coinText.text = coinsCollected.ToString();
+        }
+    }
     public void PauseState(bool state)
     {
         paused = !paused;
@@ -192,11 +210,11 @@ public class UI_Manager : MonoBehaviour
             {
                 InGameMenu.SetActive(true);
             }
-          
+
             if (countdownText != null)
                 StartCoroutine(CountdownBeforeResume());
             else
-                Time.timeScale = 1f; 
+                Time.timeScale = 1f;
         }
 
         if (pauseMenu != null)
@@ -207,7 +225,7 @@ public class UI_Manager : MonoBehaviour
 
     private IEnumerator CountdownBeforeResume()
     {
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
         int countdown = 3;
 
         countdownText.gameObject.SetActive(true);
@@ -215,7 +233,7 @@ public class UI_Manager : MonoBehaviour
         while (countdown > 0)
         {
             countdownText.text = countdown.ToString();
-            yield return new WaitForSecondsRealtime(1f); 
+            yield return new WaitForSecondsRealtime(1f);
             countdown--;
         }
 
@@ -223,6 +241,7 @@ public class UI_Manager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
 
         countdownText.gameObject.SetActive(false);
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
     }
+
 }
