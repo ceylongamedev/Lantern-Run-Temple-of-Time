@@ -707,13 +707,11 @@ MonoBehaviour:
   - {fileID: 1331280553452056239}
   - {fileID: 8597926170988392543}
   powerupsPrefabs:
-  - {fileID: 5582888345495438420, guid: 7451347e5972ff24a89a029950242424, type: 3}
-  - {fileID: 5711375857391833698, guid: 0ebe087a0dbbea747a5a963c01816757, type: 3}
+  - {fileID: 8894537722470838740, guid: 7451347e5972ff24a89a029950242424, type: 3}
+  - {fileID: 1035484998146386354, guid: 0ebe087a0dbbea747a5a963c01816757, type: 3}
   powerupSpawnPoints:
   - {fileID: 7611507676617605636}
   - {fileID: 2814290631863835436}
-  specialObjectPrefabs: []
-  specialObjectSpawnPoints: []
   spawnDelay: 5
 --- !u!1 &4922347906380049909
 GameObject:

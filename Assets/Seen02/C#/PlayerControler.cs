@@ -390,13 +390,15 @@ public class PlayerControler : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             CoinFlyEffect.Instance.PlayFlyEffect(transform.position);// Coing flay
+            UI_Manager.Instance.UpdateCoins(1);
         }
         if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
             Die();
 
         if (other.CompareTag("Lantern")) 
         {
-            ActivateObjects();      
+            ActivateObjects();
+            UI_Manager.Instance.UpdateScore(20);
         }
 
         if (other.CompareTag("Mgnet"))
@@ -451,7 +453,7 @@ public class PlayerControler : MonoBehaviour
         
         if (uiScript)
         {
-            uiScript.EndGame(true);
+            uiScript.EndGame();
             Debug.Log("Is Player Dead");
         }
     }

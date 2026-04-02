@@ -85,6 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinRotation
   rotationSpeed: 100
+  _EEM:
+  - {fileID: 2100000, guid: cbc313968d4404a4f8112e049aee6f8b, type: 2}
+  - {fileID: 2100000, guid: d39c041f2428c2947aaa9c451a08155f, type: 2}
+  _coin: {fileID: 1834851011230952143}
 --- !u!1001 &1564959724995270558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,5 +169,10 @@ PrefabInstance:
 --- !u!4 &1314316520496541813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0d03be0744cd8e44a8d5651c73c267e7, type: 3}
+  m_PrefabInstance: {fileID: 1564959724995270558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1834851011230952143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d03be0744cd8e44a8d5651c73c267e7, type: 3}
   m_PrefabInstance: {fileID: 1564959724995270558}
   m_PrefabAsset: {fileID: 0}

@@ -34,11 +34,6 @@ public class PickupManager : MonoBehaviour
     public List<Transform> powerupSpawnPoints;
     private GameObject spawnedPowerup;
 
-    [Header("Special Object")]
-    public List<GameObject> specialObjectPrefabs;  // New slot for special objects
-    public List<Transform> specialObjectSpawnPoints;  // Spawn points for the special object
-    private GameObject spawnedSpecialObject;  // Reference for the special object
-
     [Header("Spawn Settings")]
     public float spawnDelay = 5f;
     private bool hasSpawnedInitially = false;
@@ -75,7 +70,6 @@ public class PickupManager : MonoBehaviour
         SpawnObstacle();
         SpawnObstacle2();
         SpawnPowerups();
-        SpawnSpecialObject();  // New call for spawning the special object
     }
 
     // ================= SAFE SPAWN CORE =================
@@ -181,20 +175,8 @@ public class PickupManager : MonoBehaviour
         ClearObject(ref spawnedPowerup);
 
         float chance = Random.value;
-        if (chance > 0.2f) return;
+        //if (chance > 0.2f) return;
 
         SpawnObject(powerupsPrefabs, powerupSpawnPoints, ref spawnedPowerup);
-    }
-
-    // ================= SPECIAL OBJECT =================
-
-    public void SpawnSpecialObject()
-    {
-        ClearObject(ref spawnedSpecialObject); 
-
-        //float chance = Random.value;
-        //if (chance > 0.3f) return;  
-
-        SpawnObject(specialObjectPrefabs, specialObjectSpawnPoints, ref spawnedSpecialObject); 
     }
 }

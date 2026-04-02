@@ -5,10 +5,9 @@ public class CoinRotation : MonoBehaviour
     public float rotationSpeed = 50f;
     private bool isStarted = false;
 
-    public float[] _EEM;
-
+    [SerializeField]  Material[] _EEM;
+    [SerializeField] private GameObject _coin;
     private MeshRenderer _meshRenderer;
-
     private void OnEnable()
     {
         startRotating();
@@ -16,7 +15,7 @@ public class CoinRotation : MonoBehaviour
 
     private void Start()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = _coin.GetComponent<MeshRenderer>();
         float value = Random.value;
         if (value < 0.01f)
             EEMaterial();
@@ -36,7 +35,7 @@ public class CoinRotation : MonoBehaviour
 
     void EEMaterial()
     {
-       // _meshRenderer.material = _EEM[Random.Range(0, _EEM.Length)];
+       _meshRenderer.material = _EEM[Random.Range(0, _EEM.Length)];
     }
 
 }

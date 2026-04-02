@@ -1584,18 +1584,14 @@ MonoBehaviour:
   - {fileID: 7052571526111086386}
   - {fileID: 5146407935075689032}
   powerupsPrefabs:
-  - {fileID: 5582888345495438420, guid: 7451347e5972ff24a89a029950242424, type: 3}
-  - {fileID: 5711375857391833698, guid: 0ebe087a0dbbea747a5a963c01816757, type: 3}
+  - {fileID: 8894537722470838740, guid: 7451347e5972ff24a89a029950242424, type: 3}
+  - {fileID: 1035484998146386354, guid: 0ebe087a0dbbea747a5a963c01816757, type: 3}
   powerupSpawnPoints:
   - {fileID: 8610175263577697617}
   - {fileID: 3186504166115197339}
   - {fileID: 478520071723620270}
   - {fileID: 5637646201788488023}
   - {fileID: 1914679561570355342}
-  specialObjectPrefabs:
-  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
-  specialObjectSpawnPoints:
-  - {fileID: 1176918082727276691}
   spawnDelay: 5
 --- !u!1 &5444964079360843592
 GameObject:
