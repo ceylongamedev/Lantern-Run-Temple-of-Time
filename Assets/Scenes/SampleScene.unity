@@ -1589,6 +1589,17 @@ MonoBehaviour:
   UseImpactDirection: 0
   ScaleImpactWithMass: 0
   ScaleImpactWithSpeed: 0
+--- !u!114 &821484350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8240013844958896862, guid: 87255a2d957420a42953a2686bf9e177, type: 3}
+  m_PrefabInstance: {fileID: 92687694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821484342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2567788029176381781, guid: 8d473f58812fc244b97968f563a1c253, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4596607875496551888, guid: 8d473f58812fc244b97968f563a1c253, type: 3}
       propertyPath: far clip plane
       value: 100
@@ -1951,6 +1966,11 @@ Transform:
   - {fileID: 1563255778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1348904459 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2466631908756141974, guid: cde1768477805914688f26ea273f4346, type: 3}
+  m_PrefabInstance: {fileID: 2057311359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1363331331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7361159742260735554, guid: 8d473f58812fc244b97968f563a1c253, type: 3}
@@ -2628,6 +2648,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2466631908756141974, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2998546058090000796, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2713,6 +2737,10 @@ PrefabInstance:
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1348904459}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: magnet
       value: 
       objectReference: {fileID: 1512072480}
@@ -2744,6 +2772,10 @@ PrefabInstance:
       propertyPath: _jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: virtualCam
+      value: 
+      objectReference: {fileID: 821484350}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: hitParticle
       value: 
@@ -2784,6 +2816,10 @@ PrefabInstance:
       propertyPath: targetRenderer
       value: 
       objectReference: {fileID: 1368319248}
+    - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
+      propertyPath: FallLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 9212223005755868818, guid: cde1768477805914688f26ea273f4346, type: 3}
       propertyPath: _coinLayer.m_Bits
       value: 64

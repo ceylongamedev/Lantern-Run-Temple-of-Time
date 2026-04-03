@@ -38,6 +38,7 @@ public class PickupManager : MonoBehaviour
     public float spawnDelay = 5f;
     private bool hasSpawnedInitially = false;
 
+
     private void OnEnable()
     {
         if (!hasSpawnedInitially)
@@ -179,4 +180,5 @@ public class PickupManager : MonoBehaviour
 
         SpawnObject(powerupsPrefabs, powerupSpawnPoints, ref spawnedPowerup);
     }
+
 }

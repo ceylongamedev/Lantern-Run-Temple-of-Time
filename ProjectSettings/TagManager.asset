@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Mgnet
   - SpeedUP
+  - Obstacle1
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Water
   - UI
   - coinLayer
-  - 
+  - fall
   - 
   - 
   - 

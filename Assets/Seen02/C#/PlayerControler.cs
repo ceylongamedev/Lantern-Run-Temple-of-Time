@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class PlayerControler : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private CinemachineCamera virtualCam;
 
     private float _lockz;
     private float _originalHeight;
@@ -64,7 +67,6 @@ public class PlayerControler : MonoBehaviour
     [Header("Foot Dust")]
     [SerializeField] private ParticleSystem footDust;
 
-
     private void Awake()
     {
         animator.applyRootMotion = false;
@@ -88,11 +90,7 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()
     {
-        //SpeedUp
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-            //isPowerUpOn = !isPowerUpOn;
-        //}
+        
         if (isPowerUpOn)
         {
             targetRenderer.material.SetFloat("_ON", 1f);
@@ -102,13 +100,8 @@ public class PlayerControler : MonoBehaviour
         {
             targetRenderer.material.SetFloat("_ON", 0f);
         }
-        //Magnet
-
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-            //magnetActive = !magnetActive;
-        //}
-            
+        
+  
 
         if (_isDead) return;
 
@@ -116,7 +109,6 @@ public class PlayerControler : MonoBehaviour
         HandleMovement();
         ApplyGravity();
         HandleFootDust();
-
         if (!magnetActive)
         {
             magnet.SetActive(false);
@@ -132,6 +124,7 @@ public class PlayerControler : MonoBehaviour
             Vector3 direction = (transform.position - coin.transform.position).normalized;
             coin.transform.position += direction * _magnetSpeed * Time.deltaTime;
         }
+
     }
 
     private void HandleFootDust()
@@ -393,12 +386,14 @@ public class PlayerControler : MonoBehaviour
             UI_Manager.Instance.UpdateCoins(1);
         }
         if (other.CompareTag("Obstacle") && !_isDead && !isPowerUpOn)
+        {
             Die();
+        }
 
         if (other.CompareTag("Lantern")) 
         {
             ActivateObjects();
-            UI_Manager.Instance.UpdateScore(20);
+            UI_Manager.Instance.UpdateCoins(20);
         }
 
         if (other.CompareTag("Mgnet"))
@@ -440,10 +435,22 @@ public class PlayerControler : MonoBehaviour
     private void Die()
     {
         _isDead = true;
+
         animator.SetBool("isRunning", false);
         animator.SetBool("isDead", true);
+
         EndlessEnvironment.isPlayerDead = true;
         _LnaternObject.SetActive(false);
+
+        //controller.enabled = false;
+
+        // Stop camera follow
+        if (virtualCam != null)
+        {
+            virtualCam.Follow = null;
+            virtualCam.LookAt = null;
+        }
+
         StartCoroutine(DestroyPlayer());
     }
 
@@ -454,15 +461,7 @@ public class PlayerControler : MonoBehaviour
         if (uiScript)
         {
             uiScript.EndGame();
-            Debug.Log("Is Player Dead");
         }
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, _magnetRadius);
     }
 
 }//Class
