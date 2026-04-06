@@ -58,6 +58,12 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private Color speedColer = Color.blue;
     [SerializeField] private GameObject magnet;
 
+    [Header("Sound Effects")]
+    public AudioClip coinSFX; // Coin collection sound
+    public AudioClip lanternSFX;
+    public AudioClip deathSFX; // Death sound
+    private AudioSource audioSource;
+
     [SerializeField] private UI_Manager uiScript;
 
     [Header("Lantern To Enable")]
@@ -77,9 +83,17 @@ public class PlayerControler : MonoBehaviour
         _originalHeight = controller.height;
         _originalCenter = controller.center;
 
-
         if (_lantern != null)
             _lanternOriginalLocalPos = _lantern.localPosition;
+
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+
+        // Check if AudioSource is missing
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing!");
+        }
     }
 
     private void Start()
@@ -382,6 +396,10 @@ public class PlayerControler : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
+            if (coinSFX != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(coinSFX); // Play coin collection sound
+            }
             CoinFlyEffect.Instance.PlayFlyEffect(transform.position);// Coing flay
             UI_Manager.Instance.UpdateCoins(1);
         }
@@ -392,6 +410,10 @@ public class PlayerControler : MonoBehaviour
 
         if (other.CompareTag("Lantern")) 
         {
+            if (lanternSFX != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(lanternSFX); // Play coin collection sound
+            }
             ActivateObjects();
             UI_Manager.Instance.UpdateCoins(20);
         }
@@ -443,6 +465,13 @@ public class PlayerControler : MonoBehaviour
         _LnaternObject.SetActive(false);
 
         //controller.enabled = false;
+
+        // Play Death SFX when player dies
+        if (deathSFX != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSFX); // Play death sound
+        }
+
 
         // Stop camera follow
         if (virtualCam != null)
