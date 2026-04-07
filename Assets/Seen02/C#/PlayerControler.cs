@@ -62,6 +62,7 @@ public class PlayerControler : MonoBehaviour
     public AudioClip coinSFX; // Coin collection sound
     public AudioClip lanternSFX;
     public AudioClip deathSFX; // Death sound
+    public AudioClip powerUPSFX;
     private AudioSource audioSource;
 
     [SerializeField] private UI_Manager uiScript;
@@ -412,6 +413,7 @@ public class PlayerControler : MonoBehaviour
         {
             if (lanternSFX != null && audioSource != null)
             {
+                audioSource.clip = lanternSFX;
                 audioSource.PlayOneShot(lanternSFX); // Play coin collection sound
             }
             ActivateObjects();
@@ -421,12 +423,25 @@ public class PlayerControler : MonoBehaviour
         if (other.CompareTag("Mgnet"))
         {
             magnetActive = true;
+            UI_Manager.Instance.StartPowerUp((int)Mathf.RoundToInt(_magnetDuration));
+            if (powerUPSFX != null && audioSource != null)
+            {
+                audioSource.clip = powerUPSFX;
+                audioSource.PlayOneShot(powerUPSFX); // Play powerup collection sound
+            }
+
             Invoke(nameof(DisableMagnet), _magnetDuration);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("SpeedUP"))
         {
             isPowerUpOn = true;
+            UI_Manager.Instance.StartPowerUp((int)Mathf.RoundToInt(_speedUpDuration));
+            if (powerUPSFX != null && audioSource != null)
+            {
+                audioSource.clip = powerUPSFX;
+                audioSource.PlayOneShot(powerUPSFX); // Play powerup collection sound
+            }
             Invoke(nameof(DisableSpeed), _speedUpDuration);
             Destroy(other.gameObject);
         }
@@ -457,6 +472,7 @@ public class PlayerControler : MonoBehaviour
     private void Die()
     {
         _isDead = true;
+        
 
         animator.SetBool("isRunning", false);
         animator.SetBool("isDead", true);
@@ -486,11 +502,8 @@ public class PlayerControler : MonoBehaviour
     private IEnumerator DestroyPlayer()
     {
         yield return new WaitForSeconds(_destroyDelay);
-        
-        if (uiScript)
-        {
-            uiScript.EndGame();
-        }
+
+        UI_Manager.Instance.EndGame();
     }
 
 }//Class

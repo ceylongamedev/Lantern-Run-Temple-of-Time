@@ -38,6 +38,7 @@ public class UI_Manager : MonoBehaviour
 
     public bool isPlayerdead;
 
+    private float _score;
 
     bool paused = false;
     private void Awake()
@@ -59,6 +60,8 @@ public class UI_Manager : MonoBehaviour
         {
             powerupParent.gameObject.SetActive(false);
         }
+
+        isPlayerdead = false;
     }
 
     private void Update()
@@ -67,7 +70,7 @@ public class UI_Manager : MonoBehaviour
         {
             PauseState(!paused);
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.L))
         {
             EndGame();
@@ -92,10 +95,27 @@ public class UI_Manager : MonoBehaviour
         {
             UpdateScore(Random.Range(0, 500));
         }
+        */
+        
+        
+
+        if (!isPlayerdead)
+        {
+            /*/
+            Debug.Log(_score);*/
+
+            _score += 1 * Time.deltaTime;
+            score = (int)Mathf.RoundToInt(_score);
+
+            scoreText.text = score.ToString();
+        }
     }
+
+    
 
     public void EndGame()
     {
+        isPlayerdead = true;
         endScreen.SetActive(true);
         InGameMenu.SetActive(false);
         AllowPause = false;
@@ -110,7 +130,6 @@ public class UI_Manager : MonoBehaviour
             Debug.LogError("Something havent been assigned properly in the UI Manager's end game ui elements");
         }
         
-       
         Time.timeScale = 0f;
     }
     public void LoadScreenWithLoadingScreen(int index)
@@ -243,5 +262,7 @@ public class UI_Manager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
+
+   
 
 }
