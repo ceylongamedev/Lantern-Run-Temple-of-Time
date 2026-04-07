@@ -1286,6 +1286,9 @@ MonoBehaviour:
   - {fileID: 3927773026003538714}
   - {fileID: 4954955148154226549}
   - {fileID: 3468881013286112249}
+  SpecialPrefabs:
+  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  SpecialSpawnPoints: []
   spawnDelay: 5
 --- !u!1 &7831713787165833814
 GameObject:

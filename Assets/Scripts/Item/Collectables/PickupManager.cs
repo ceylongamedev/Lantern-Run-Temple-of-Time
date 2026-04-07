@@ -34,6 +34,11 @@ public class PickupManager : MonoBehaviour
     public List<Transform> powerupSpawnPoints;
     private GameObject spawnedPowerup;
 
+    [Header("Special")]
+    public List<GameObject> SpecialPrefabs;
+    public List<Transform> SpecialSpawnPoints;
+    private GameObject spawnedSpecial;
+
     [Header("Spawn Settings")]
     public float spawnDelay = 5f;
     private bool hasSpawnedInitially = false;
@@ -176,9 +181,21 @@ public class PickupManager : MonoBehaviour
         ClearObject(ref spawnedPowerup);
 
         float chance = Random.value;
-        //if (chance > 0.2f) return;
+        if (chance > 0.2f) return;
 
         SpawnObject(powerupsPrefabs, powerupSpawnPoints, ref spawnedPowerup);
+    }
+
+    // ================= POWERUPS =================
+
+    public void SpawnSPECIAL()
+    {
+        ClearObject(ref spawnedSpecial);
+
+        float chance = Random.value;
+        //if (chance > 0.2f) return;
+
+        SpawnObject(SpecialPrefabs, SpecialSpawnPoints, ref spawnedSpecial);
     }
 
 }

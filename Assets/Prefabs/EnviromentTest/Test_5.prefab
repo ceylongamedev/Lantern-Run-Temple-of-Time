@@ -712,6 +712,9 @@ MonoBehaviour:
   powerupSpawnPoints:
   - {fileID: 7611507676617605636}
   - {fileID: 2814290631863835436}
+  SpecialPrefabs:
+  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  SpecialSpawnPoints: []
   spawnDelay: 5
 --- !u!1 &4922347906380049909
 GameObject:
