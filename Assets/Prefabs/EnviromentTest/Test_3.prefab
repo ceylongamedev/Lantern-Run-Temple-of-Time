@@ -1306,6 +1306,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6809743060064005903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3910661386407811768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419124584916086732}
+  m_Layer: 0
+  m_Name: Mahasona_Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419124584916086732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910661386407811768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3052009613281652710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3952281014889628103
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,6 +3189,7 @@ Transform:
   - {fileID: 2704284741535389684}
   - {fileID: 3261308394682359638}
   - {fileID: 7388424620571574207}
+  - {fileID: 419124584916086732}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-3623990842126567144
@@ -3256,6 +3288,10 @@ MonoBehaviour:
   - {fileID: 2225070617277230833}
   - {fileID: 5631096310978597649}
   - {fileID: 4323412874999462766}
+  SpecialPrefabs:
+  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  SpecialSpawnPoints:
+  - {fileID: 419124584916086732}
   spawnDelay: 5
 --- !u!1 &8963100629082298365
 GameObject:

@@ -76,6 +76,7 @@ public class PickupManager : MonoBehaviour
         SpawnObstacle();
         SpawnObstacle2();
         SpawnPowerups();
+        SpawnSPECIAL();
     }
 
     // ================= SAFE SPAWN CORE =================

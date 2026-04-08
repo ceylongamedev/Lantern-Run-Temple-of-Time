@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0e8bcb6e3016c4e9e0adfa7403c430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MahasonaDetact
-  range: 5
+  range: 30
   playerTag: Player
 --- !u!1 &6976939410437146468
 GameObject:
