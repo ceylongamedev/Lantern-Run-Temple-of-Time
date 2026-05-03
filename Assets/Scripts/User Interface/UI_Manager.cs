@@ -96,22 +96,22 @@ public class UI_Manager : MonoBehaviour
             UpdateScore(Random.Range(0, 500));
         }
         */
-        
-        
+    }
 
+    private void FixedUpdate()
+    {
         if (!isPlayerdead)
         {
             /*/
             Debug.Log(_score);*/
 
-            _score += 1 * Time.deltaTime;
+            _score += 1;
             score = (int)Mathf.RoundToInt(_score);
 
             scoreText.text = score.ToString();
         }
     }
 
-    
 
     public void EndGame()
     {

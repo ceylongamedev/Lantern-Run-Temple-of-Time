@@ -194,7 +194,7 @@ public class PickupManager : MonoBehaviour
         ClearObject(ref spawnedSpecial);
 
         float chance = Random.value;
-        //if (chance > 0.2f) return;
+        //if (chance > 0.1f) return;
 
         SpawnObject(SpecialPrefabs, SpecialSpawnPoints, ref spawnedSpecial);
     }

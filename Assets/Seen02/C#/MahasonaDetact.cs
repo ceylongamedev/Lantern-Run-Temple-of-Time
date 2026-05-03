@@ -42,9 +42,9 @@ public class MahasonaDetact : MonoBehaviour
     {
         if (completeEffect != null)
         {
-            GameObject fx = Instantiate(completeEffect, transform.position + Vector3.up, Quaternion.identity);
+            GameObject fx = Instantiate(completeEffect, transform.position + Vector3.up, completeEffect.transform.rotation);
 
-            // Auto destroy
+            /*/ Auto destroy
             ParticleSystem ps = fx.GetComponent<ParticleSystem>();
             if (ps != null)
             {
@@ -53,7 +53,7 @@ public class MahasonaDetact : MonoBehaviour
             else
             {
                 Destroy(fx, 3f);
-            }
+            }*/
         }
 
     }

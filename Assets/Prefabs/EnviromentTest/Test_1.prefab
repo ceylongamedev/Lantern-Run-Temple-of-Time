@@ -909,7 +909,7 @@ MonoBehaviour:
   - {fileID: 5163950036140107521}
   - {fileID: 3457409118299538071}
   SpecialPrefabs:
-  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  - {fileID: 6608256319286263134, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
   SpecialSpawnPoints: []
   spawnDelay: 5
 --- !u!1 &3622807285731170797

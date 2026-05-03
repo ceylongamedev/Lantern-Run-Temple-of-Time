@@ -3289,7 +3289,7 @@ MonoBehaviour:
   - {fileID: 5631096310978597649}
   - {fileID: 4323412874999462766}
   SpecialPrefabs:
-  - {fileID: 6949971921745805936, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
+  - {fileID: 6608256319286263134, guid: f4a63a7d51b01494283a2a9433363e2c, type: 3}
   SpecialSpawnPoints:
   - {fileID: 419124584916086732}
   spawnDelay: 5
